@@ -1,0 +1,64 @@
+#galleryLanding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #fff;
+}
+
+.header {
+    margin-top: 5%;
+}
+
+.buttonsWrapper {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13pt;
+    letter-spacing: 1px;
+    padding: 20px 45px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: solid #fff;
+    border-width: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    color: #a1b746;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+
+/* PHOTO GALLERY */
+
+#photos {
+    display: flex;
+    justify-content: center;
+}
+
+.photosWrapper {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+.photo img {
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+}

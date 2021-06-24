@@ -1,0 +1,43 @@
+#landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #fff;
+}
+
+.header {
+    margin-top: 10%;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.buttonsWrapper {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13pt;
+    letter-spacing: 1px;
+    padding: 20px 45px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: solid #fff;
+    border-width: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    color: #a1b746;
+    background-color: #fff;
+    border-color: #fff;
+}

@@ -1,0 +1,27 @@
+#navbar {
+    background-color: #718031;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navLink {
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border: none;
+    background-color: #718031;
+    padding: 15px 40px;
+    font-weight: 500;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.navLink:hover {
+    background-color: #a1b746;
+}
+
+.activeNavLink {
+    background-color: #a1b746;
+}

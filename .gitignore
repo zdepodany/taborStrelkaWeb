@@ -1,0 +1,18 @@
+# top-level static files
+/static/
+
+# ignore python cache
+*__pycache__/
+
+# vim swap files
+*.swp
+
+# NO BINARY FILES, ZDENEK
+photos/
+img/
+db.sqlite3
+
+
+# These will be useful, but let's not fuck anything up just yet.
+migrations/
+
