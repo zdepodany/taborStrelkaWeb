@@ -10,6 +10,7 @@
 # NO BINARY FILES, ZDENEK
 photos/
 img/
+docs/
 db.sqlite3
 
 
