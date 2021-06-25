@@ -13,8 +13,18 @@
         <p> Nyní je rok {{year}} </p>
     </div>
 
+    {% if year %}
+        <section id="photos">
+            <div class="photosWrapper">
+                <div class="photo">
+                    <img src="{% static "photos/2021/marcel.jpg" %}" alt="">
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
     <div class="buttonsWrapper">
-        <a href="gallery2021.html"><button class="button">2021</button></a>
+        <a href="/gallery/?year=2021"><button class="button">2021</button></a>
     </div>
 </section>
 {% endblock %}
