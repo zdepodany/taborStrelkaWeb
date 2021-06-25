@@ -15,6 +15,3 @@ def gallery(request):
 def gallery2021(request):
    return render(request, "gallery2021.html", {})
 
-def docs(request):
-   return render(request, "docs.html", {})
-
