@@ -10,17 +10,63 @@
 <section id="galleryLanding">
     <div class="header">
         <h1>Fotogalerie</h1>
-        <p> Nyní je rok {{year}} </p>
+        <p>{{year}}</p>
     </div>
 
     {% if year %}
+
+<!-- MODAL -->
+
+        <div id="modalBG">
+            <div class="optionBar">
+                <button class="optionButton material-icons">
+                    <span class="material-icons-outlined">file_download</span>
+                </button>
+                <button class="optionButton material-icons" onclick="closeModal()">
+                    <span class="material-icons-outlined">close</span>
+                </button>
+            </div>
+            <div class="slider">
+                <button class="optionButton material-icons prev">
+                    <span class="material-icons-outlined">arrow_back</span>
+                </button>
+                <button class="optionButton material-icons next">
+                    <span class="material-icons-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+
+<!-- GALLERY -->
+
         <section id="photos">
             <div class="photosWrapper">
-                <div class="photo">
+                <div class="photo modalOpener" onclick="openModal()">
                     <img src="{% static "photos/2021/IMG_20180613_003232.jpg" %}" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal()">
+                    <img src="{% static "photos/2021/IMG_20180623_114910.jpg" %}" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal()">
+                    <img src="{% static "photos/2021/IMG_20180627_174918.jpg" %}" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal()">
+                    <img src="{% static "photos/2021/IMG_20180701_173448.jpg" %}" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal()">
+                    <img src="{% static "photos/2021/IMG_20180701_173456.jpg" %}" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal()">
+                    <img src="{% static "photos/2021/IMG_20180701_173457.jpg" %}" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal()">
+                    <img src="{% static "photos/2021/marcel.jpg" %}" alt="">
                 </div>
             </div>
         </section>
+
+<!-- SCRIPTS -->
+
+        <script src="{% static "scripts.js" %}"></script>
     {% endif %}
 
     <div class="buttonsWrapper">
