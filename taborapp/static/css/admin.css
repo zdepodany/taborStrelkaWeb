@@ -1,0 +1,88 @@
+#adminPanel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.panelWrapper {
+    width: 90%;
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15pt;
+    margin-bottom: 5%;
+    cursor: pointer;
+    width: 50%;
+    padding: 15px;
+    background-color: #a1b746;
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+}
+
+.redButton {
+    background-color: #ff4d4d;
+
+/* ADMIN LOGIN */
+
+#adminLogin {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.adminLoginWrapper {
+    margin-top: 20%;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminLoginWrapper h4 {
+    margin-bottom: 15%;
+}
+
+.adminLoginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#email {
+    margin-bottom: 10%;
+}
+
+#pwd {
+    margin-bottom: 15%;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #a1b746;
+    transition: 0.3s;
+}
+
+.button:hover {
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+    background-color: #718031;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+}

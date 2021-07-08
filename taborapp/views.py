@@ -13,3 +13,8 @@ def gallery(request):
 
     return render(request, "gallery.html", {"page":1, "year":year})
 
+def adminPanel(request):
+    return render(request, "adminPanel.html", {"page":3})
+
+def adminLogin(request):
+    return render(request, "adminLogin.html", {"page":2})
