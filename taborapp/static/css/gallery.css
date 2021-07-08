@@ -90,33 +90,53 @@ h5 {
 /* MODAL */
 
 #modalBG {
+    top: 0;
     position: fixed;
     width: 100%;
     height: 100%;
     display: none;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .optionBar {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background-color: #a1b746;
     position: fixed;
+    justify-content: space-between;
+    width: 100%;
     top: 0;
-    padding: 15px 0 15px 0;
+    padding: 10px 0 10px 0;
 }
 
 .optionButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     border-radius: 15px;
     padding: 10px;
-    font-size: 40pt;
+    transition: 0.2s;
+}
+
+.optionButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.modalPhotoWrapper {
+    width: 80%;
+    padding: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalPhoto {
+    max-width: 90%;
+    max-height: 90vh;
 }
 
 .slider {
