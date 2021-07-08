@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block headerExtension %}
+<link rel="stylesheet" href="{% static "css/admin.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<section id="adminPanel">
+    <div class="panelWrapper">
+        <button class="button">NAHRÁT</button>
+        <button class="button redButton">ODSTRANIT VŠE</button>
+        <button class="button">ODHLÁSIT</button>
+    </div>
+</section>
+
+{% endblock %}
