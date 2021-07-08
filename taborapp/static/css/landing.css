@@ -5,11 +5,8 @@
     flex-direction: column;
 }
 
-h1 {
-    color: #fff;
-}
-
 .header {
+    color: #fff;
     margin-top: 10%;
     text-align: center;
     letter-spacing: 5px;
