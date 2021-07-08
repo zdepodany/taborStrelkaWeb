@@ -10,8 +10,14 @@ h1 {
     text-align: center;
 }
 
+h5 {
+    color: #fff;
+    text-align: center;
+}
+
 .header {
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .buttonsWrapper {
@@ -48,10 +54,12 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .photosWrapper {
-    width: 70%;
+    width: 100%;
+    padding: 0 15% 0 15%;
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
@@ -115,4 +123,26 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+
+/* PAGER */
+
+.pagerWrapper {
+    width: 8%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.page {
+    cursor: pointer;
+    padding: 4px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.2);
 }
