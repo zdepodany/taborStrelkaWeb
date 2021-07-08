@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block headerExtension %}
+<link rel="stylesheet" href="{% static "css/gallery.css" %}">
+{% endblock %}
+
+{% block content %}
+<section id="galleryLanding">
+    <div class="header">
+        <h1>Admin</h1>
+    </div>
+
+    {% if username %}
+        <section id="photos">
+            <div class="photosWrapper">
+                <div class="photo">
+                    <p> You are logged in as: {{username}} </p>
+
+                    <section id="adminPanel">
+                         <form action="/admin/" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.file }}
+                           <input type="submit">
+                         </form>
+                        <div class="panelWrapper">
+                            <button class="button">NAHRÁT</button>
+                            <button class="button redButton">ODSTRANIT VŠE</button>
+                        </div>
+                    </section>
+                    <form action="/admin/">
+                        <input type="hidden" name="logout" value="1">
+                        <input type="submit" value="Log out">
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <form name="login" method="POST" action="/admin/">
+            {% csrf_token %}
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <input type="submit" value="Log in">
+        </form>
+    {% endif %}
+
+</section>
+{% endblock %}
+
