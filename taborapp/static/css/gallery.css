@@ -7,10 +7,17 @@
 
 h1 {
     color: #fff;
+    text-align: center;
+}
+
+h5 {
+    color: #fff;
+    text-align: center;
 }
 
 .header {
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .buttonsWrapper {
@@ -44,16 +51,24 @@ h1 {
 /* PHOTO GALLERY */
 
 #photos {
+    width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .photosWrapper {
-    width: 60%;
+    width: 100%;
+    padding: 0 15% 0 15%;
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
     flex-wrap: wrap;
+}
+
+.photo {
+    margin-bottom: 2%;
+    cursor: pointer;
 }
 
 .photo img {
@@ -61,4 +76,93 @@ h1 {
     border-radius: 10px;
     width: 300px;
     height: 300px;
+    object-fit: cover;
+    transition: 0.2s;
+}
+
+.photo img:hover {
+    padding: 10px;
+    width: 280px;
+    height: 280px;
+}
+
+
+/* MODAL */
+
+#modalBG {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.optionBar {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    padding: 10px 0 10px 0;
+}
+
+.optionButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.optionButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.modalPhotoWrapper {
+    width: 80%;
+    padding: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalPhoto {
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.slider {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* PAGER */
+
+.pagerWrapper {
+    width: 8%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.page {
+    cursor: pointer;
+    padding: 4px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.2);
 }
