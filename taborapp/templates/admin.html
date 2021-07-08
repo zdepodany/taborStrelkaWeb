@@ -29,7 +29,13 @@
                             <button class="button redButton">ODSTRANIT VŠE</button>
                         </div>
                     </section>
-                    <form action="/admin/">
+                    <form action="/admin/" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="delete_all" value="1">
+                        <input type="submit" value="Delete All">
+                    </form>
+                    <form action="/admin/" method="POST">
+                        {% csrf_token %}
                         <input type="hidden" name="logout" value="1">
                         <input type="submit" value="Log out">
                     </form>
