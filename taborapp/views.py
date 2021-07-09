@@ -31,6 +31,21 @@ def delete_all():
         remove(model.file.path)
         model.delete()
 
+def get_photos(year, page):
+    pages = PhotoModel.objects.all().count() // 16 + 1
+
+    # Someone asked for a page that doesn't exist
+    # Return all non-existent photos
+    if pages < page:
+        return None, pages
+
+    begin = (page - 1) * 16
+    end = page * 16
+
+    entries = PhotoModel.objects.all().order_by('-id')[begin:end]
+    photos = [entry.file.url for entry in entries]
+    return photos, pages
+
 # Create your views here.
 
 def index(request):
@@ -38,9 +53,16 @@ def index(request):
 
 def gallery(request):
     args = request.GET
-    year = args.get("year", 0)
+    year = args.get("year", localtime().tm_year)
+    page = args.get("page", 1)
 
-    return render(request, "gallery.html", {"page":1, "year":year})
+    year = int(year)
+    page = int(page)
+
+    photos, pages = get_photos(year, page)
+
+    return render(request, "gallery.html", {"page": page, "year": year, "photos": photos,
+                                            "pages": range(1, pages + 1)})
 
 # This class is a terrific example of spaghetti, but it should make it work for now.
 # TODO TODO TODO 
