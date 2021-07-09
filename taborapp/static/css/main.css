@@ -79,3 +79,26 @@ a {
 .contactBlock {
     width: 30%;
 }
+
+
+@media only screen and (max-width: 450px) {
+    h3 {
+        font-size: 30pt;
+        font-weight: 700;
+    }
+
+    #contactHeader {
+        margin-bottom: 5%;
+    }
+
+    .contactBlockWrapper {
+        width: 70%;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .contactBlock {
+        width: 100%;
+        margin-bottom: 10%;
+    }
+}

@@ -3,55 +3,53 @@
 {% load static %}
 
 {% block headerExtension %}
-<link rel="stylesheet" href="{% static "css/gallery.css" %}">
+<link rel="stylesheet" href="{% static "css/admin.css" %}">
 {% endblock %}
 
 {% block content %}
-<section id="galleryLanding">
-    <div class="header">
-        <h1>Admin</h1>
-    </div>
+
+
+{# admin Panel #}
 
     {% if username %}
-        <section id="photos">
-            <div class="photosWrapper">
-                <div class="photo">
-                    <p> You are logged in as: {{username}} </p>
 
-                    <section id="adminPanel">
-                         <form action="/admin/" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.file }}
-                           <input type="submit">
-                         </form>
-                        <div class="panelWrapper">
-                            <button class="button">NAHRÁT</button>
-                            <button class="button redButton">ODSTRANIT VŠE</button>
-                        </div>
-                    </section>
-                    <form action="/admin/" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="delete_all" value="1">
-                        <input type="submit" value="Delete All">
-                    </form>
-                    <form action="/admin/" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="logout" value="1">
-                        <input type="submit" value="Log out">
-                    </form>
-
-                </div>
+        <section id="adminPanel">
+            <div class="header">
+                <h1>Admin Panel</h1>
             </div>
+            <p>Jsi přihlášen jako: <b>{{username}}</b> </p>
+            <form class="adminPanelForm" action="/admin/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="file" multiple="" required="" id="id_file">
+                <input class="button" type="submit" value="NAHRÁT">
+            </form>
+            <form class="adminPanelForm" action="/admin/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="delete_all" value="1">
+                <input class="deleteButton" type="submit" value="ODSTRANIT VŠE">
+            </form>
+            <form class="adminPanelForm" action="/admin/" method="POST">
+                {% csrf_token %}
+                    <input type="hidden" name="logout" value="1">
+                    <input class="button" type="submit" value="ODHLÁSIT">
+            </form>
         </section>
+
+{# admin Login #}
+
     {% else %}
-        <form name="login" method="POST" action="/admin/">
-            {% csrf_token %}
-            <input type="text" name="username">
-            <input type="password" name="password">
-            <input type="submit" value="Log in">
-        </form>
+        <section id="adminLogin">
+            <div class="header">
+                <h1>Admin Login</h1>
+            </div>
+            <form class="adminLoginForm" name="login" method="POST" action="/admin/">
+                {% csrf_token %}
+                <input class="textInput" type="text" name="username">
+                <input class="textInput" type="password" name="password">
+                <input class="button" type="submit" value="PŘIHLÁSIT">
+            </form>
+        </section>
     {% endif %}
 
-</section>
 {% endblock %}
 
