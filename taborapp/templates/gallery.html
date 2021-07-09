@@ -19,9 +19,11 @@
 
         <div id="modalBG">
             <div class="optionBar">
-                <button class="optionButton">
-                    <img src="{% static "img/file_download_white_24dp.svg" %}" alt="download">
-                </button>
+                <a id="downloadPhoto" href="{% static "photos/2021/IMG_20180627_174918.jpg" %}" download="">
+                    <button type="submit" class="optionButton">
+                        <img src="{% static "img/file_download_white_24dp.svg" %}" alt="download">
+                    </button>
+                </a>
                 <button class="optionButton" onclick="closeModal()">
                     <img src="{% static "img/close_white_24dp.svg" %}" alt="close">
                 </button>

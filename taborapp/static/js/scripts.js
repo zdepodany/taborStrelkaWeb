@@ -5,6 +5,7 @@ function openModal(index, max) {
     let modal;
     let photoWrap;
     let strIndex;
+    let downloadPhoto;
     modal = document.getElementById('modalBG');
     modal.style.display = 'flex';
 
@@ -14,6 +15,9 @@ function openModal(index, max) {
     photoWrap.state = new Object();
     photoWrap.src = imgTag.src;
     photoWrap.state.index = index;
+
+    downloadPhoto = document.getElementById('downloadPhoto');
+    downloadPhoto.href = imgTag.src;
 }
 
 function closeModal() {
@@ -33,6 +37,7 @@ function modalPrev() {
     let index;
     let strIndex;
     let ourPhoto;
+    let downloadPhoto;
 
     photoWrap = document.getElementById('photoWrap');
     index = photoWrap.state.index;
@@ -44,6 +49,9 @@ function modalPrev() {
         photoWrap.src = ourPhoto.src;
         photoWrap.state.index = index;
     }
+
+    downloadPhoto = document.getElementById('downloadPhoto');
+    downloadPhoto.href = ourPhoto.src;
 }
 
 function modalNext(max) {
@@ -51,6 +59,7 @@ function modalNext(max) {
     let index;
     let strIndex;
     let ourPhoto;
+    let downloadPhoto;
 
     photoWrap = document.getElementById('photoWrap');
     index = photoWrap.state.index;
@@ -61,4 +70,7 @@ function modalNext(max) {
         photoWrap.src = ourPhoto.src;
         photoWrap.state.index = index;
     }
+
+    downloadPhoto = document.getElementById('downloadPhoto');
+    downloadPhoto.href = ourPhoto.src;
 }
