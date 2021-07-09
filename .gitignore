@@ -1,5 +1,7 @@
 # top-level static files
 /static/
+# media files
+media/
 
 # ignore python cache
 *__pycache__/
@@ -11,6 +13,6 @@
 photos/
 img/
 docs/
-db.sqlite3
+*.sqlite3
 
 
