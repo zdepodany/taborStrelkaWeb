@@ -19,21 +19,23 @@
 
         <div id="modalBG">
             <div class="optionBar">
-                <button class="optionButton">
-                    <img src="{% static "img/file_download_white_24dp.svg" %}" alt="download">
-                </button>
+                <a id="downloadPhoto" href="{% static "photos/2021/IMG_20180627_174918.jpg" %}" download="">
+                    <button type="submit" class="optionButton">
+                        <img src="{% static "img/file_download_white_24dp.svg" %}" alt="download">
+                    </button>
+                </a>
                 <button class="optionButton" onclick="closeModal()">
                     <img src="{% static "img/close_white_24dp.svg" %}" alt="close">
                 </button>
             </div>
             <div class="slider">
-                <button class="optionButton prev">
+                <button class="optionButton" id="prev" onclick="modalPrev()">
                     <img src="{% static "img/arrow_back_white_24dp.svg" %}" alt="previous">
                 </button>
-                <div class="modalPhotoWrapper">
-                    <img class="modalPhoto" src="{% static "photos/2021/IMG_20180623_114910.jpg" %}">
+                <div class="modalPhotoWrapper" >
+                    <img src="" alt="" id="photoWrap" class="modalPhoto">
                 </div>
-                <button class="optionButton next">
+                <button class="optionButton" id="next" onclick="modalNext(1)">
                     <img src="{% static "img/arrow_forward_white_24dp.svg" %}" alt="forward">
                 </button>
             </div>
@@ -45,10 +47,16 @@
             <div class="photosWrapper">
 
                 {% for photo in photos %}
-                <div class="photo modalOpener" onclick="openModal()">
-                    <img src="{{ photo }}" alt="">
+                <div class="photo modalOpener" onclick="openModal('')">
+                    <img src="{{ photo }}" id="" alt="">
                 </div>
                 {% endfor %}
+                <div class="photo modalOpener" onclick="openModal(0)">
+                    <img src="{% static "photos/2021/IMG_20180627_174918.jpg" %}" id="photo0" alt="">
+                </div>
+                <div class="photo modalOpener" onclick="openModal(1)">
+                    <img src="{% static "photos/2021/IMG_20180623_114910.jpg" %}" id="photo1" alt="">
+                </div>
 
             </div>
             <div class="pagerWrapper">
