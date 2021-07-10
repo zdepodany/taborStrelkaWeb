@@ -61,8 +61,13 @@ def gallery(request):
 
     photos, pages = get_photos(year, page)
 
-    return render(request, "gallery.html", {"page": page, "year": year, "photos": photos,
-                                            "pages": range(1, pages + 1)})
+    return render(request, "gallery.html", {
+                "page": page,
+                "year": year,
+                "photos": photos,
+                "pages": range(1, pages + 1),
+                "max": len(photos) - 1
+                })
 
 # This class is a terrific example of spaghetti, but it should make it work for now.
 # TODO TODO TODO 
