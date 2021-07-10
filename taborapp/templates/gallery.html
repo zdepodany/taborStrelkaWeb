@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load taborapp_extras %}
 
 {% load static %}
 
@@ -35,7 +36,7 @@
                 <div class="modalPhotoWrapper" >
                     <img src="" alt="" id="photoWrap" class="modalPhoto">
                 </div>
-                <button class="optionButton" id="next" onclick="modalNext(1)">
+                    <button class="optionButton" id="next" onclick="modalNext({{max}})">
                     <img src="{% static "img/arrow_forward_white_24dp.svg" %}" alt="forward">
                 </button>
             </div>
@@ -47,16 +48,10 @@
             <div class="photosWrapper">
 
                 {% for photo in photos %}
-                <div class="photo modalOpener" onclick="openModal('')">
-                    <img src="{{ photo }}" id="" alt="">
+                <div class="photo modalOpener" onclick="openModal({{forloop.counter0}}, {{max}})">
+                    <img src="{{ photo }}" id="{{ "photo"|cat:forloop.counter0 }}" alt="">
                 </div>
                 {% endfor %}
-                <div class="photo modalOpener" onclick="openModal(0)">
-                    <img src="{% static "photos/2021/IMG_20180627_174918.jpg" %}" id="photo0" alt="">
-                </div>
-                <div class="photo modalOpener" onclick="openModal(1)">
-                    <img src="{% static "photos/2021/IMG_20180623_114910.jpg" %}" id="photo1" alt="">
-                </div>
 
             </div>
             <div class="pagerWrapper">
