@@ -33,18 +33,21 @@ h5 {
     font-size: 13pt;
     letter-spacing: 1px;
     padding: 20px 45px;
-    background-color: transparent;
-    border-radius: 20px;
-    border: solid #fff;
-    border-width: 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    border: none;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .button:hover {
     color: #a1b746;
-    background-color: #fff;
-    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.button:active {
+    color: #a1b746;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 
@@ -158,11 +161,55 @@ h5 {
 
 .page {
     cursor: pointer;
-    padding: 4px;
+    padding: 10px;
     color: #fff;
     border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+}
+
+.page:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.page a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+/* RESPONSIVITY */
+
+@media only screen and (max-width: 450px) {
+    .photosWrapper {
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .photo img {
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media only screen and (max-width: 368px) {
+    .photosWrapper {
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .photo img {
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+        width: 200px;
+        height: 200px;
+    }
 }
