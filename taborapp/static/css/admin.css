@@ -37,6 +37,7 @@
 
 #adminLogin {
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,8 +45,8 @@
 }
 
 .header {
-    margin-top: 10%;
     color: #fff;
+    margin-bottom: 5%;
 }
 
 
@@ -53,6 +54,7 @@
 
 #adminPanel {
     display: flex;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;

@@ -1,25 +1,28 @@
 #navbar {
-    background-color: #718031;
+    width: 100%;
+    top: 0;
+    position: fixed;
     display: flex;
     justify-content: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    background-color: #85992a;
+    box-shadow: 0 0 9px rgba(56, 56, 56, 0.4);
 }
 
 .navLink {
     font-family: 'Roboto', sans-serif;
+    font-size: 12pt;
+    letter-spacing: 0.5pt;
     cursor: pointer;
     border: none;
-    background-color: #718031;
-    padding: 15px 40px;
+    background-color: #85992a;
+    padding: 17px 40px;
     font-weight: 500;
     color: #fff;
     transition: 0.3s;
 }
 
 .navLink:hover {
-    background-color: #a1b746;
+    background-color: #6f8023;
 }
 
 .activeNavLink {
