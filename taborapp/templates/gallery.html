@@ -4,71 +4,8 @@
 {% load static %}
 
 {% block headerExtension %}
-<link rel="stylesheet" href="{% static "css/gallery.css" %}">
+
 {% endblock %}
-
 {% block content %}
-<section id="galleryLanding">
-    <div class="header">
-        <h1>Fotogalerie</h1>
-        <h5>{{ year }}</h5>
-    </div>
 
-    {% if year %}
-
-<!-- MODAL -->
-
-        <div id="modalBG">
-            <div class="optionBar">
-                <a id="downloadPhoto" href="{% static "photos/2021/IMG_20180627_174918.jpg" %}" download="">
-                    <button type="submit" class="optionButton">
-                        <img src="{% static "img/file_download_white_24dp.svg" %}" alt="download">
-                    </button>
-                </a>
-                <button class="optionButton" onclick="closeModal()">
-                    <img src="{% static "img/close_white_24dp.svg" %}" alt="close">
-                </button>
-            </div>
-            <div class="slider">
-                <button class="optionButton" id="prev" onclick="modalPrev()">
-                    <img src="{% static "img/arrow_back_white_24dp.svg" %}" alt="previous">
-                </button>
-                <div class="modalPhotoWrapper" >
-                    <img src="" alt="" id="photoWrap" class="modalPhoto">
-                </div>
-                    <button class="optionButton" id="next" onclick="modalNext({{max}})">
-                    <img src="{% static "img/arrow_forward_white_24dp.svg" %}" alt="forward">
-                </button>
-            </div>
-        </div>
-
-<!-- GALLERY -->
-
-        <section id="photos">
-            <div class="photosWrapper">
-
-                {% for photo in photos %}
-                <div class="photo modalOpener" onclick="openModal({{forloop.counter0}}, {{max}})">
-                    <img src="{{ photo }}" id="{{ "photo"|cat:forloop.counter0 }}" alt="">
-                </div>
-                {% endfor %}
-
-            </div>
-            <div class="pagerWrapper">
-                {# <div class="page active"><h6>1</h6></div> #}
-                {% for i in pages %}
-                <div class="page"><a href="/gallery/?page={{i}}">{{i}}</a></div>
-                {% endfor %}
-            </div>
-        </section>
-
-<!-- SCRIPTS -->
-
-        <script src="{% static "js/scripts.js" %}"></script>
-    {% endif %}
-
-    <div class="buttonsWrapper">
-        <a href="/gallery/?year=2021"><button class="button">2021</button></a>
-    </div>
-</section>
 {% endblock %}

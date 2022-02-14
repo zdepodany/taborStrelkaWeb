@@ -1,10 +1,10 @@
-from django.conf.urls import include, url
+from django.urls import include, re_path
 # TODO: Port all to classes
 from taborapp.views import index, gallery, AdminView
 
 urlpatterns = [
-    url(r'^$', index),
-    url(r'^gallery/', gallery),
-    url(r'^admin/', AdminView.as_view()),
+    re_path(r'^$', index),
+    re_path(r'^gallery/', gallery),
+    re_path(r'^admin/', AdminView.as_view()),
 ]
 

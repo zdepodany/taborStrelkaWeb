@@ -3,20 +3,12 @@
     <head>
         {% load static %}
 
-        <title>Tábor Střelka Břežany</title>
+        <title>Tábor Střelka</title>
         <link rel="icon" type="image/svg" href="{% static "img/favicon.svg" %}">
 
     <!-- REQUIRED META TAGS -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- GOOGLE FONTS -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-        <link rel="stylesheet" href="{% static "css/main.css" %}">
-        <link rel="stylesheet" href="{% static "css/navbar.css" %}">
 
     {% block headerExtension %}
     {% endblock %}
@@ -24,36 +16,7 @@
 
     <body>
 
-        <!-- NAVBAR -->
-            <div id="navbar">
-                <a href="/"><button class ="{{ indexNavLink }} navLink">DOMŮ</button></a>
-                <a href="/gallery"><button class="{{ galleryNavLink }} navLink">FOTOGALERIE</button></a>
-            </div>
-            {% block content %}
-            {% endblock %}
 
-        <!-- FOOTER -->
-            <footer id="footer">
-                <div id="contactHeader">
-                    <h3>Kontakt</h3>
-                    <h4>Spolek Břežanská střelka z.s.</h4>
-                </div>
-                <div class="contactBlockWrapper">
-                    <div class="contactBlock">
-                        <h4>Adresa</h4>
-                        <p>Mackovice 23</p>
-                        <p>671 78</p>
-                    </div>
-                    <div class="contactBlock">
-                        <h4>Kontakt</h4>
-                        <p>tel.: +420 602 488 834</p>
-                        <p>email: b.podana@seznam.cz</p>
-                    </div>
-                    <div class="contactBlock">
-                        <h4>IČ</h4>
-                        <p>051 45 368</p>
-                    </div>
-                </div>
-            </footer>
+
     </body>
 </html>
