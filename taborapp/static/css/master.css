@@ -8,8 +8,88 @@ html {
 
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 a {
     text-decoration: none;
+}
+
+
+/* - Used Elements - */
+
+/* Tabs */
+
+.firstTab {
+    margin-top: 10rem;
+}
+
+.tab {
+    width: 75rem;
+    padding: 3rem 10rem;
+    border-radius: 1.6rem;
+
+    background-color: #FCF8EF;
+}
+
+.tab form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Inputs */
+
+.inputWrap {
+    width: 100%;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputHeader {
+    width: 34%;
+    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #2B2A28;
+}
+
+.input {
+    width: 30%;
+    padding: 1rem 1.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    border: solid 0.3rem #708F36;
+    border-radius: 1rem;
+    transition: 0.3s;
+}
+
+/* Buttons */
+
+.primaryButton {
+    cursor: pointer;
+    padding: 1rem 3rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #708F36;
+    border: none;
+    border-radius: 0.8rem;
+    transition: 0.3s;
+}
+
+.primaryButton:hover {
+    background-color: #566E29;
+}
+
+.primaryButton:active {
+    transform: scale(.90);
 }
