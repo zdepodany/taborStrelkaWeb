@@ -7,5 +7,27 @@
 {% endblock %}
 {% block content %}
 
+    <section id="adminPanel">
+        <div class="header">
+            <h1>Admin Panel</h1>
+        </div>
+        <p>Jsi přihlášen jako: <b>{{username}}</b> </p>
+        <form class="adminPanelForm" action="/admin/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file" multiple="" required="" id="id_file">
+            <input class="button" type="submit" value="NAHRÁT">
+        </form>
+        <form class="adminPanelForm" action="/admin/" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="delete_all" value="1">
+            <input class="deleteButton" type="submit" value="ODSTRANIT VŠE">
+        </form>
+        <form class="adminPanelForm" action="/admin/" method="POST">
+            {% csrf_token %}
+                <input type="hidden" name="logout" value="1">
+                <input class="button" type="submit" value="ODHLÁSIT">
+        </form>
+    </section>
+
 {% endblock %}
 
