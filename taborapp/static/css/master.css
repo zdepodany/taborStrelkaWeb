@@ -68,7 +68,7 @@ a {
     font-size: 1.6rem;
     border: solid 0.3rem #708F36;
     border-radius: 1rem;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 /* Buttons */
@@ -83,7 +83,7 @@ a {
     background-color: #708F36;
     border: none;
     border-radius: 0.8rem;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .primaryButton:hover {
