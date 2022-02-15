@@ -1,30 +1,66 @@
-#navbar {
-    width: 100%;
-    top: 0;
+.navbar {
     position: fixed;
+    top: 0;
+    margin: 0;
+    width: 100%;
+    height: 5rem;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #FCF8EF;
+    box-shadow: 0 0.1rem 0.6rem #00000017;
+}
+
+.navbarButtonWrap {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbarButton {
+    width: 30%;
+    padding: 0.75rem 0;
+    color: #2B2A28;
+    font-weight: 600;
     display: flex;
     justify-content: center;
-    background-color: #85992a;
-    box-shadow: 0 0 9px rgba(56, 56, 56, 0.4);
+    align-items: center;
+    border-radius: 0.8rem;
+    transition: 0.2s;
 }
 
-.navLink {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12pt;
-    letter-spacing: 0.5pt;
-    cursor: pointer;
-    border: none;
-    background-color: #85992a;
-    padding: 17px 40px;
-    font-weight: 500;
-    color: #fff;
-    transition: 0.3s;
+.navbarButton:hover {
+    background-color: #ABDB52;
 }
 
-.navLink:hover {
-    background-color: #6f8023;
+.navbarLoginWrap {
+    width: 25%;
+    height: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.activeNavLink {
-    background-color: #a1b746;
+.navbarLoginButton {
+    display: flex;
+    margin-right: 1.5rem;
+    padding: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    color: #2B2A28;
+    transition: 0.2s;
+}
+
+.navbarLoginButton:hover {
+    background-color: #ABDB52;
+}
+
+
+/* Responsivity */
+
+@media only screen and (max-width: 1024px) {
+    
 }

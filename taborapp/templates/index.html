@@ -1,22 +1,19 @@
-{% extends "layout.html" %}
-
+{% extends "userLayout.html" %}
 {% load static %}
-
 {% block headerExtension %}
-<!-- CSS -->
-<link rel="stylesheet" href="{% static "css/landing.css" %}">
+    <link rel="stylesheet" href="{% static "css/landing.css" %}">
 {% endblock %}
 
 {% block content %}
-<!-- LANDING -->
-<section id="landing">
-    <div class="header">
-        <h1>Tábor<br>Střelka<br>Břežany</h1>
-    </div>
-
-    <div class="buttonsWrapper">
-        <a href="/gallery/"><button class="button">FOTOGALERIE</button></a>
-        <a href="#footer"><button class="button">KONTAKT</button></a>
-    </div>
-</section>
+    <section class="landingSection">
+        <div class="imgAndName">
+            <img src="{% static "img/Win11SE_bloom.png" %}" alt="">
+            <div>
+                <h1>TÁBOR<br>STŘELKA</h1>
+            </div>
+        </div>
+        <div class="landingDesc">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec quis nibh at felis congue commodo. Nunc auctor. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Nunc dapibus tortor vel mi dapibus sollicitudin. Vivamus porttitor turpis ac leo. Nullam dapibus fermentum ipsum. Duis pulvinar. Phasellus faucibus molestie nisl. Pellentesque pretium lectus id turpis. Morbi scelerisque luctus velit. Nullam at arcu a est sollicitudin euismod.</p>
+        </div>
+    </section>
 {% endblock %}

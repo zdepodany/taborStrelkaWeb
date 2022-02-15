@@ -73,7 +73,9 @@ def gallery(request):
 # TODO TODO TODO 
 # TODO TODO TODO 
 # TODO TODO TODO 
-
+class LoginView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, "login.html")
 # I'm gonna keep a very awful comment-based log of changes so future Marcel has
 # any chance of fixing this mess. Also, here is one more TODO
 class AdminView(FormView):
