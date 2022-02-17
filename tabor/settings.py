@@ -82,7 +82,6 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -115,6 +114,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Custom django settings
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "/admin/"
