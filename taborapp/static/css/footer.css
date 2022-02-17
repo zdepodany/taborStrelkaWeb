@@ -1,0 +1,100 @@
+footer {
+    width: 100%;
+    margin-top: 5rem;
+    justify-content: center;
+    background-color: #2B2A28;
+}
+
+.mainFooterSection {
+    width: 50%;
+    margin: 3.5rem 0;
+}
+
+.subFooterSection {
+    width: 100%;
+}
+
+.footerContentWrapper {
+    width: 100%;
+    color: #FFF;
+}
+
+.footerContentItem {
+    width: 100%;
+    height: 3.2rem;
+    margin: 0.5rem 0;
+    align-items: center;
+}
+
+.icon {
+    width: 3.2rem;
+    margin-right: 1.5rem;
+    color: #ABDB52;
+}
+
+.footerText {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.footerSubtext {
+    margin-left: 1rem;
+    font-weight: 300;
+}
+
+a .footerText {
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+a .footerText:hover {
+    color: #ABDB52;
+}
+
+.footerInvoiceBoldText {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.footerInvoiceText {
+    margin-left: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.footerLine {
+    height: 0.05rem;
+    width: 100%;
+    margin: 6rem 0 2rem 0;
+    background-color: rgb(156, 156, 156);
+}
+
+.footerWebMapWrapper {
+    width: 100%;
+    justify-content: space-between;
+    color: #FFF;
+}
+
+.footerWebMapLinks a {
+    margin-right: 3.5rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.footerWebMapLinks a:hover {
+    color: #ABDB52;
+}
+
+.taborLink {
+    font-weight: 300;
+}
+
+.taborLink a {
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.taborLink a:hover {
+    color: #ABDB52;
+}

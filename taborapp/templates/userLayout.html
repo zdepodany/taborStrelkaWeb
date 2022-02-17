@@ -11,3 +11,53 @@
         </div>
     </section>
 {% endblock %}
+{% block footer %}
+    <footer class="flex">
+        <section class="mainFooterSection flexColumn">
+            <section class="subFooterSection flex">
+                <div class="footerContentWrapper flexColumn">
+                    <h5>Kontaktní informace</h5>
+                    <div class="footerContentItem flex">
+                        <span class="material-icons icon">phone</span>
+                        <a href="tel:+420602488834">
+                            <span class="footerText">+420 602 488 834</span>
+                        </a>
+                        <span class="footerSubtext">(hlavní vedoucí)</span>
+                    </div>
+                    <div class="footerContentItem flex">
+                        <span class="material-icons icon">maps_home_work</span>
+                        <span class="footerText">Mackovice 23, 671 78</span>
+                    </div>
+                    <div class="footerContentItem flex">
+                        <span class="material-icons icon">email</span>
+                        <a href="mailto:hasiciunanov@seznam.cz">
+                            <span class="footerText">b.podana@seznam.cz</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footerContentWrapper flexColumn">
+                    <h5>Fakturační údaje</h5>
+                    <div class="footerContentItem flex">
+                        <span class="footerInvoiceBoldText">IČO:</span>
+                        <span class="footerInvoiceText">05145368</span>
+                    </div>
+                    <div class="footerContentItem flex">
+                        <span class="footerInvoiceBoldText">Bankovní účet:</span>
+                        <span class="footerInvoiceText">2401014090/2010</span>
+                    </div>
+                </div>
+            </section>
+            <div class="footerLine"></div>
+            <section class="footerWebMapWrapper flex">
+                <div class="footerWebMapLinks flex">
+                    <a href="/">Domů</a>
+                    <a href="/gallery">Fotogalerie</a>
+                    <a href="">Ke stažení</a>
+                    <a href="/login">Přihlášení</a>
+                </div>
+                <span class="taborLink">© 2022 <a href="https://zdenda.xyz" target="_blank">Zdeněk Podaný</a> & <a href="https://plch.xyz" target="_blank">Marcel Plch</a></span>
+            </section>
+        </section>
+    </footer>
+{% endblock %}
