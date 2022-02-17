@@ -83,19 +83,25 @@ class YearPickView(TemplateView):
 
 class AdminLoginView(LoginView):
     template_name = "login.html"
-    next_page = "admin.html"
+    next_page = "/admin/"
+    next = "/admin/"
 
 
 class AdminView(PermissionRequiredMixin, FormView):
     form_class = UploadFileForm
-    template_name = 'admin.html'
-    success_url = '/admin/'
+
+    template_name = "admin.html"
     login_url = "/login/"
+
+    permission_required = ("taborapp.view_photomodel",
+                           "taborapp.add_photomodel",
+                           "taborapp.delete_photomodel", 
+                        )
 
     def get(self, request, *args, **kwargs):
         form = UploadFileForm()
 
-        return render(request, "admin.html", {"username":username, "form":form})
+        return render(request, "admin.html", {"username":"hello", "form":form})
 
     # 0: Zeroth entry.
     # 1: Override post method for it to handle multiple files.
@@ -110,10 +116,10 @@ class AdminView(PermissionRequiredMixin, FormView):
         delet = args.get("delete_all", None)
         if out:
             logout(request)
-            return render(request, "admin.html", {"username":None})
+            return HttpResponseRedirect('/admin/')
         if delet:
             delete_all()
-            return render(request, "admin.html", {"username":username})
+            return render(request, "admin.html", {"username":"hello"})
 
         # Handle file upload
         # 1
@@ -121,5 +127,5 @@ class AdminView(PermissionRequiredMixin, FormView):
         upload_file(request, form, files)
         # 1 END
 
-        return render(request, "admin.html", {"username":username, "form":form})
+        return render(request, "admin.html", {"username":"hello", "form":form})
 
