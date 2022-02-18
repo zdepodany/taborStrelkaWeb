@@ -73,6 +73,9 @@ def gallery(request):
 # TODO TODO TODO 
 # TODO TODO TODO 
 # TODO TODO TODO 
+class YearPickView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, "yearPick.html")
 class LoginView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "login.html")

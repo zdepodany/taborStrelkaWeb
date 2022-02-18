@@ -27,6 +27,11 @@ h1 {
     font-weight: 700;
 }
 
+h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 h5 {
     font-size: 2.3rem;
     font-weight: 600;
@@ -123,4 +128,17 @@ p {
 .flexColumn {
     display: flex;
     flex-direction: column;
+}
+
+.flexCenter {
+    justify-content: center;
+    align-items: center;
+}
+
+.greyColor {
+    color: #2B2A28;
+}
+
+.whiteColor {
+    color: #FFF;
 }

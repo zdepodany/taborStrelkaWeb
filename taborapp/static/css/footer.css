@@ -27,6 +27,7 @@ footer {
 }
 
 .icon {
+    cursor: default;
     width: 3.2rem;
     margin-right: 1.5rem;
     color: #ABDB52;

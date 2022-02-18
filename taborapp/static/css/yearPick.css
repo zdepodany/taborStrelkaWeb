@@ -1,0 +1,9 @@
+.yearPick {
+    width: 70%;
+    justify-content: space-evenly;
+}
+
+.yearPick .primaryButton {
+    width: 20%;
+    text-align: center;
+}
