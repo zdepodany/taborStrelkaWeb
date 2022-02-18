@@ -4,8 +4,21 @@
 {% load static %}
 
 {% block headerExtension %}
-
 {% endblock %}
 {% block content %}
-
+    <section class="mainSection firstTab">
+        <section class="yearAndButton flex">
+            <h2>Rok 2021</h2>
+            <a href="#" class="primaryButton flex flexCenter" download><span class="material-icons">file_download</span>STÁHNOUT</a>
+        </section>
+        <section class="gallery flex">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+        </section>
+    </section>
 {% endblock %}

@@ -28,6 +28,11 @@ h1 {
     font-weight: 700;
 }
 
+h2 {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
 h3 {
     font-size: 2rem;
     font-weight: 600;
@@ -47,6 +52,14 @@ p {
 /* - Used Elements - */
 
 /* Tabs */
+
+.mainSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .firstTab {
     margin-top: 10rem;
