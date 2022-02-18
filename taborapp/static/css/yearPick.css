@@ -1,3 +1,7 @@
+#yearPickSection {
+    min-height: 100vh;
+}
+
 .yearPick {
     width: 70%;
     justify-content: space-evenly;
