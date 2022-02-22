@@ -114,6 +114,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Custom django settings
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = "taborapp.TaborUser"
+AUTHENTICATION_BACKENDS = ['taborapp.backends.EmailBackend']
+LOGIN_REDIRECT_URL = "/admin/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

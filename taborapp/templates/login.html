@@ -1,15 +1,19 @@
+<<<<<<< HEAD
 {% extends "userLayout.html" %}
 {% block content %}
 
 <section class="tab firstTab">
-    <form>
+    <form class="adminLoginForm" name="login" method="POST" action="/login/">
+        {% csrf_token %}
+
         <div class="inputWrap">
             <span class="inputHeader">E-mail</span>
-            <input type="email" placeholder="E-mail" class="input">
+            {{ form.username }}
         </div>
+
         <div class="inputWrap">
             <span class="inputHeader">Heslo</span>
-            <input type="password" placeholder="Heslo" class="input">
+            {{ form.password }}
         </div>
         <input type="submit" value="PŘIHLÁSIT" class="primaryButton">
     </form>
