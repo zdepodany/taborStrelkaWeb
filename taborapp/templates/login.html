@@ -3,24 +3,19 @@
 {% block content %}
 
 <section class="tab firstTab">
-    {# TODO #}
-    {# Top is Zdenek's redesigned, bottom is Marcel's refactored, unify #}
-    <form>
-        <div class="inputWrap">
-            <span class="inputHeader">E-mail</span>
-            <input type="email" placeholder="E-mail" class="input">
-        </div>
-        <div class="inputWrap">
-            <span class="inputHeader">Heslo</span>
-            <input type="password" placeholder="Heslo" class="input">
-        </div>
-        <input type="submit" value="PŘIHLÁSIT" class="primaryButton">
-    </form>
-
     <form class="adminLoginForm" name="login" method="POST" action="/login/">
         {% csrf_token %}
-        {{ form }}
-        <input class="button" type="submit" value="PŘIHLÁSIT">
+
+        <div class="inputWrap">
+            <span class="inputHeader">E-mail</span>
+            {{ form.username }}
+        </div>
+
+        <div class="inputWrap">
+            <span class="inputHeader">Heslo</span>
+            {{ form.password }}
+        </div>
+        <input type="submit" value="PŘIHLÁSIT" class="primaryButton">
     </form>
 </section>
 

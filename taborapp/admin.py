@@ -1,3 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .models import TaborUser
 
-# Register your models here.
+admin.site.register(TaborUser, UserAdmin)

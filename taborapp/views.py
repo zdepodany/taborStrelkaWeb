@@ -10,7 +10,7 @@ from django.views.generic import TemplateView, FormView
 from os import remove
 from time import localtime
 
-from .forms import UploadFileForm
+from .forms import UploadFileForm, LoginForm
 from .models import PhotoModel
 
 # TODO:
@@ -86,6 +86,7 @@ class YearPickView(TemplateView):
 class AdminLoginView(LoginView):
     template_name = "login.html"
     next_page = "/admin/"
+    authentication_form = LoginForm
 
 class AdminView(PermissionRequiredMixin, FormView):
     form_class = UploadFileForm
