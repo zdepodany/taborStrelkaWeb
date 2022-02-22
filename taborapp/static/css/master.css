@@ -7,6 +7,7 @@ html {
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -16,6 +17,7 @@ body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 
@@ -24,6 +26,21 @@ a {
 h1 {
     font-size: 6rem;
     font-weight: 700;
+}
+
+h2 {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+h5 {
+    font-size: 2.3rem;
+    font-weight: 600;
 }
 
 p {
@@ -35,6 +52,14 @@ p {
 /* - Used Elements - */
 
 /* Tabs */
+
+.mainSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .firstTab {
     margin-top: 10rem;
@@ -105,4 +130,29 @@ p {
 
 .primaryButton:active {
     transform: scale(.90);
+}
+
+
+/* - Small Classes - */
+
+.flex {
+    display: flex;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexCenter {
+    justify-content: center;
+    align-items: center;
+}
+
+.greyColor {
+    color: #2B2A28;
+}
+
+.whiteColor {
+    color: #FFF;
 }

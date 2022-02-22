@@ -1,0 +1,62 @@
+.downloadItem {
+    width: 100%;
+    margin: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.downloadInformation {
+    width: 90%;
+}
+
+.downloadNumber {
+    cursor: default;
+    width: 9rem;
+    height: 9rem;
+    margin-right: 3rem;
+    font-size: 4rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    background-color: #2B2A28;
+    color: #ABDB52;
+}
+
+.downloadText {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.downloadName {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.downloadFileName {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #707070;
+    transition: 0.2s;
+}
+
+.downloadFileName:hover {
+    color: #ABDB52;
+}
+
+.downloadDocumentButton {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.8rem;
+    transition: 0.2s;
+}
+
+.downloadDocumentButton:hover {
+    background-color: #ABDB52;
+}
+
+.downloadDocumentButton:active {
+    transform: scale(.80);
+}
+
+.downloadDocumentButton span {
+    font-size: 3.5rem;
+}
