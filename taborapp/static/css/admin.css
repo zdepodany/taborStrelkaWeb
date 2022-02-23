@@ -1,0 +1,25 @@
+.adminTab {
+    width: 15%;
+    padding: 1.8rem 8rem;
+    border-radius: 1.6rem;
+    background-color: #FCF8EF;
+}
+
+.adminHubText {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+/* Custom file upload input */
+
+#realFileUpload {
+    display: none;
+}
+
+
+/* Small functions just for AdminHub */
+
+.adMarginTop {
+    margin-top: 1rem;
+}

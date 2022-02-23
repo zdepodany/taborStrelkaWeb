@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "adminLayout.html" %}
 
 {% load static %}
 
@@ -7,26 +7,30 @@
 {% endblock %}
 {% block content %}
 
-    <section id="adminPanel">
-        <div class="header">
-            <h1>Admin Panel</h1>
-        </div>
-        <p>Jsi přihlášen jako: <b>{{username}}</b> </p>
-        <form class="adminPanelForm" action="/admin/" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file" name="file" multiple="" required="" id="id_file">
-            <input class="button" type="submit" value="NAHRÁT">
-        </form>
-        <form class="adminPanelForm" action="/admin/" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="delete_all" value="1">
-            <input class="deleteButton" type="submit" value="ODSTRANIT VŠE">
-        </form>
-        <form class="adminPanelForm" action="/admin/" method="POST">
-            {% csrf_token %}
-                <input type="hidden" name="logout" value="1">
-                <input class="button" type="submit" value="ODHLÁSIT">
-        </form>
+    <section class="adminTab firstTab flexColumn">
+        <span class="adminHubText">Vložení fotek do galerie</span>
+
+        <button id="fakeFileUploadButton" type="button" class="primaryButton adMarginTop">VYBRAT FOTKY</button>
+        <span id="fakeFileUploadText"></span>
+        <input id="realFileUpload" type="file" multiple>
+
+        <button class="primaryButton adMarginTop">NAHRÁT FOTKY</button>
+    </section>
+
+    <section class="adminTab flexColumn adMarginTop">
+        <span class="adminHubText">Odstranění fotek</span>
+        <button class="primaryButton adMarginTop">ODSTRANIT JEDNOTLIVĚ</button>
+        <button class="primaryButton redButton adMarginTop">ODSTRANIT VŠE</button>
+    </section>
+
+    <section class="adminTab flexColumn adMarginTop">
+        <span class="adminHubText">Nahrávání dokumentů</span>
+        <button class="primaryButton adMarginTop">NAHRÁT</button>
+    </section>
+
+    <section class="adminTab flexColumn adMarginTop">
+        <span class="adminHubText">Změna hesla</span>
+        <button class="primaryButton adMarginTop">ZMĚNIT HESLO</button>
     </section>
 
 {% endblock %}

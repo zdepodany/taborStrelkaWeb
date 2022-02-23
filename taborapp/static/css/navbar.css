@@ -59,6 +59,22 @@
 }
 
 
+/* Admin Navbar */
+
+.navbarAdminButtonWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarUsername {
+    margin-right: 3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
 /* Responsivity */
 
 @media only screen and (max-width: 1024px) {
