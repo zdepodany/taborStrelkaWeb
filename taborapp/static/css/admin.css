@@ -11,6 +11,13 @@
 }
 
 
+/* Custom file upload input */
+
+#realFileUpload {
+    display: none;
+}
+
+
 /* Small functions just for AdminHub */
 
 .adMarginTop {
