@@ -23,13 +23,6 @@ from .models import PhotoModel
 # 1 post
 def upload_file(request, form, files):
     form = UploadFileForm(request.POST, request.FILES)
-    if form.is_valid():
-        for file in files:
-            pm = PhotoModel(file=file)
-            pm.save()
-        return HttpResponseRedirect('/admin/')
-    else:
-        return HttpResponseRedirect('/')
 # 1 post end
 
 def delete_all():
@@ -103,34 +96,13 @@ class AdminView(PermissionRequiredMixin, FormView):
                            "taborapp.delete_photomodel", 
                         )
 
-    def get(self, request, *args, **kwargs):
-        form = UploadFileForm()
-
-        return render(request, "admin.html", {"username":"hello", "form":form})
-
-    # 0: Zeroth entry.
-    # 1: Override post method for it to handle multiple files.
-    def post(self, request, *args, **kwargs):
-        form = UploadFileForm()
-        files = request.FILES.getlist('file')
-
-        # Validate user
-
-        args = request.POST
-        out = args.get("logout", None)
-        delet = args.get("delete_all", None)
-        if out:
-            logout(request)
+    def form_valid(self, form):
+        if form.is_valid():
+            for file in files:
+                pm = PhotoModel(file=file)
+                pm.save()
             return HttpResponseRedirect('/admin/')
-        if delet:
-            delete_all()
-            return render(request, "admin.html", {"username":"hello"})
+        else:
+            return HttpResponseRedirect('/')
 
-        # Handle file upload
-        # 1
-        # - upload_file(request)
-        upload_file(request, form, files)
-        # 1 END
-
-        return render(request, "admin.html", {"username":"hello", "form":form})
 
