@@ -16,6 +16,6 @@ document.querySelectorAll('#fakeFileUploadButton').forEach(function (button) {
     hiddenInput.addEventListener('change', function () {
         let fileNumberList = hiddenInput.files.length;
         label.textContent = 'Vybráno fotek: ' + fileNumberList.toString();
-    })
+    });
 
 });
