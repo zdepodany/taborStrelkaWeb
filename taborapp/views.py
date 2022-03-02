@@ -35,7 +35,6 @@ def make_thumbnail(file):
         tn.save(upload_path / name)
         return name.as_posix()
 
-
 def delete_all():
     for model in PhotoModel.objects.all():
         remove(model.file.path)
