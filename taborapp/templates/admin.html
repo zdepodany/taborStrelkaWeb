@@ -4,15 +4,20 @@
 
 {% block content %}
 
-    <section class="adminTab firstTab flexColumn">
+    <form class="adminTab firstTab flexColumn" action="/admin/" method="POST"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+
         <span class="adminHubText">Vložení fotek do galerie</span>
 
-        <button id="fakeFileUploadButton" type="button" class="primaryButton adMarginTop">VYBRAT FOTKY</button>
-        <span id="fakeFileUploadText"></span>
-        <input id="realFileUpload" type="file" multiple>
+        <button id="fakeFileUploadButton" type="button"
+                class="primaryButton adMarginTop">VYBRAT FOTKY</button>
 
-        <button class="primaryButton adMarginTop">NAHRÁT FOTKY</button>
-    </section>
+        <span id="fakeFileUploadText"></span>
+        {{ form.file }}
+
+        <input type="submit" class="primaryButton adMarginTop" value="NAHRÁT FOTKY">
+    </form>
 
     <section class="adminTab flexColumn adMarginTop">
         <span class="adminHubText">Odstranění fotek</span>

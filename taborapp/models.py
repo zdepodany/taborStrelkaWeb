@@ -7,5 +7,6 @@ class TaborUser(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
 
 class PhotoModel(models.Model):
-    file = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    file = models.ImageField(upload_to="photos/")
+    thumbnail = models.ImageField(upload_to="thumbnails/", null=True)
 

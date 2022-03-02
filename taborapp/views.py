@@ -7,11 +7,17 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, FormView
+
+from PIL import Image
+
 from os import remove
 from time import localtime
+from pathlib import Path
 
 from .forms import UploadFileForm, LoginForm
 from .models import PhotoModel
+
+upload_path = Path("media/")
 
 # TODO:
 #
@@ -20,17 +26,14 @@ from .models import PhotoModel
 
 # Helper functions
 # TODO: When there are too many, move them somewhere else
-# 1 post
-def upload_file(request, form, files):
-    form = UploadFileForm(request.POST, request.FILES)
-    if form.is_valid():
-        for file in files:
-            pm = PhotoModel(file=file)
-            pm.save()
-        return HttpResponseRedirect('/admin/')
-    else:
-        return HttpResponseRedirect('/')
-# 1 post end
+
+def make_thumbnail(file):
+    with Image.open(file) as tn:
+        size = (16, 16)
+        name = Path("thumbnails/") / file.name
+        tn.thumbnail(size)
+        tn.save(upload_path / name)
+        return name.as_posix()
 
 def delete_all():
     for model in PhotoModel.objects.all():
@@ -48,8 +51,9 @@ def get_photos(year, page):
     begin = (page - 1) * 16
     end = page * 16
 
-    entries = PhotoModel.objects.all().order_by('-id')[begin:end]
-    photos = [entry.file.url for entry in entries]
+    entries = PhotoModel.objects.all().order_by('-id')
+    photos = [entry.thumbnail.url for entry in entries]
+
     return photos, pages
 
 # Create your views here.
@@ -59,17 +63,13 @@ def index(request):
 
 def gallery(request):
     args = request.GET
-    year = args.get("year", localtime().tm_year)
-    page = args.get("page", 1)
 
-    year = int(year)
-    page = int(page)
 
-    photos, pages = get_photos(year, page)
+    photos, pages = get_photos(0, 0)
 
     return render(request, "gallery.html", {
-                "page": page,
-                "year": year,
+                "page": 0,
+                "year": 0,
                 "photos": photos,
                 "pages": range(1, pages + 1),
                 "max": len(photos) - 1
@@ -103,34 +103,17 @@ class AdminView(PermissionRequiredMixin, FormView):
                            "taborapp.delete_photomodel", 
                         )
 
-    def get(self, request, *args, **kwargs):
-        form = UploadFileForm()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)                     
 
-        return render(request, "admin.html", {"username":"hello", "form":form})
+        context["username"] = self.request.user.email
 
-    # 0: Zeroth entry.
-    # 1: Override post method for it to handle multiple files.
-    def post(self, request, *args, **kwargs):
-        form = UploadFileForm()
-        files = request.FILES.getlist('file')
+        return context
 
-        # Validate user
-
-        args = request.POST
-        out = args.get("logout", None)
-        delet = args.get("delete_all", None)
-        if out:
-            logout(request)
-            return HttpResponseRedirect('/admin/')
-        if delet:
-            delete_all()
-            return render(request, "admin.html", {"username":"hello"})
-
-        # Handle file upload
-        # 1
-        # - upload_file(request)
-        upload_file(request, form, files)
-        # 1 END
-
-        return render(request, "admin.html", {"username":"hello", "form":form})
+    def form_valid(self, form):
+        for file in form.files.pop("file"):
+            thumbnail = make_thumbnail(file)
+            pm = PhotoModel(file=file, thumbnail=thumbnail)
+            pm.save()
+        return HttpResponseRedirect('/admin/')
 

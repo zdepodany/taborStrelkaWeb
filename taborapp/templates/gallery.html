@@ -19,13 +19,9 @@
             <a href="#" class="pageItem flex flexCenter">4</a>
         </section>
         <section class="gallery flex">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
-            <img class="galleryPicture" src="{% static "img/Win11SE_bloom.png" %}">
+            {% for photo in photos %}
+                <img class="galleryPicture" src="{{ photo }}" id="{{ "photo"|cat:forloop.counter0 }}">
+            {% endfor %}
         </section>
         <section class="pagePicker flex flexCenter">
             <a href="#" class="pageItem flex flexCenter">1</a>
