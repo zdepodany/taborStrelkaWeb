@@ -2,9 +2,6 @@
 
 {% load static %}
 
-{% block headerExtension %}
-
-{% endblock %}
 {% block content %}
 
     <section class="adminTab firstTab flexColumn">
@@ -33,5 +30,10 @@
         <button class="primaryButton adMarginTop">ZMĚNIT HESLO</button>
     </section>
 
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "js/fileUpload.js" %}"></script>
 {% endblock %}
 

@@ -2,9 +2,6 @@
 
 {% load static %}
 
-{% block headerExtension %}
-
-{% endblock %}
 {% block content %}
 
     <section class="mainSection firstTab">
@@ -14,4 +11,8 @@
         </section>
     </section>
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "js/deletePhotoPick.js" %}"></script>
 {% endblock %}

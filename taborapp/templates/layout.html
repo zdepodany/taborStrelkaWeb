@@ -17,10 +17,6 @@
         <link rel="stylesheet" href="{% static "css/master.css" %}">
         <link rel="stylesheet" href="{% static "css/navbar.css" %}">
         <link rel="stylesheet" href="{% static "css/footer.css" %}">
-        <link rel="stylesheet" href="{% static "css/yearPick.css" %}">
-        <link rel="stylesheet" href="{% static "css/gallery.css" %}">
-        <link rel="stylesheet" href="{% static "css/downloads.css" %}">
-        <link rel="stylesheet" href="{% static "css/admin.css" %}">
 
     {% block headerExtension %}
     {% endblock %}
@@ -34,6 +30,6 @@
             {% block footer %}
             {% endblock %}
     </body>
-    <script src="{% static "js/fileUpload.js" %}"></script>
-    <script src="{% static "js/deletePhotoPick.js" %}"></script>
+    {% block scripts %}
+    {% endblock %}
 </html>
