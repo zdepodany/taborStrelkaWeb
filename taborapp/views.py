@@ -20,10 +20,6 @@ from .models import PhotoModel
 
 # Helper functions
 # TODO: When there are too many, move them somewhere else
-# 1 post
-def upload_file(request, form, files):
-    form = UploadFileForm(request.POST, request.FILES)
-# 1 post end
 
 def delete_all():
     for model in PhotoModel.objects.all():
@@ -41,8 +37,9 @@ def get_photos(year, page):
     begin = (page - 1) * 16
     end = page * 16
 
-    entries = PhotoModel.objects.all().order_by('-id')[begin:end]
+    entries = PhotoModel.objects.all().order_by('-id')
     photos = [entry.file.url for entry in entries]
+
     return photos, pages
 
 # Create your views here.
@@ -52,17 +49,13 @@ def index(request):
 
 def gallery(request):
     args = request.GET
-    year = args.get("year", localtime().tm_year)
-    page = args.get("page", 1)
 
-    year = int(year)
-    page = int(page)
 
-    photos, pages = get_photos(year, page)
+    photos, pages = get_photos(0, 0)
 
     return render(request, "gallery.html", {
-                "page": page,
-                "year": year,
+                "page": 0,
+                "year": 0,
                 "photos": photos,
                 "pages": range(1, pages + 1),
                 "max": len(photos) - 1
@@ -96,13 +89,16 @@ class AdminView(PermissionRequiredMixin, FormView):
                            "taborapp.delete_photomodel", 
                         )
 
-    def form_valid(self, form):
-        if form.is_valid():
-            for file in files:
-                pm = PhotoModel(file=file)
-                pm.save()
-            return HttpResponseRedirect('/admin/')
-        else:
-            return HttpResponseRedirect('/')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)                     
 
+        context["username"] = self.request.user.email
+
+        return context
+
+    def form_valid(self, form):
+        for file in form.files.pop("file"):
+            pm = PhotoModel(file=file)
+            pm.save()
+        return HttpResponseRedirect('/admin/')
 
