@@ -42,3 +42,69 @@
 .adMarginTop {
     margin-top: 1rem;
 }
+
+
+/* - Uploading documents - */
+
+.docTab {
+    width: 30%;
+    padding: 1.8rem 4.8rem;
+    border-radius: 1.6rem;
+    background-color: #FCF8EF;
+}
+
+.documentUploadWrapper {
+    width: 100%;
+    margin: 1rem 0;
+
+    background-color: aquamarine;
+}
+
+.docName {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #2B2A28;
+}
+
+.docDownWrapper {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.infoWrapper {
+    align-items: center;
+}
+
+.docFileName {
+    cursor: default;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #707070;
+}
+
+.downloadNumber {
+    cursor: default;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 0.7rem;
+    background-color: #2B2A28;
+    color: #ABDB52;
+}
+
+#realDocUpload {
+    display: none;
+}
+
+.docUploadButton {
+    cursor: pointer;
+    width: 5rem;
+    height: 5rem;
+    border: none;
+    border-radius: 0.7rem;
+    color: #2B2A28;
+    background-color: #ABDB52;
+}

@@ -1,0 +1,21 @@
+{% extends "adminLayout.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="docTab firstTab flexColumn">
+    <div class="documentUploadWrapper flexColumn">
+        <span class="docName">1. Nástupní list</span>
+        <div class="docDownWrapper flex">
+            <div class="infoWrapper flex">
+                <span class="downloadNumber flex flexCenter">1</span>
+                <span class="docFileName">holyZadky.pdf</span>
+            </div>
+
+            <button id="fakeFileUploadButton" type="button" class="docUploadButton flex flexCenter"><span class="material-icons">file_upload</span></button>
+            <input id="realDocUpload" type="file">
+        </div>
+    </div>
+</section>
+
+{% endblock %}

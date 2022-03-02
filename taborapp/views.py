@@ -75,6 +75,10 @@ def gallery(request):
                 "max": len(photos) - 1
                 })
 
+class DocumentsUploadView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, "uploadDocuments.html")
+
 class DeleteSinglePhotoView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "deleteSinglePhoto.html")
