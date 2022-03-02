@@ -7,11 +7,17 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, FormView
+
+from PIL import Image
+
 from os import remove
 from time import localtime
+from pathlib import Path
 
 from .forms import UploadFileForm, LoginForm
 from .models import PhotoModel
+
+upload_path = Path("media/")
 
 # TODO:
 #
@@ -20,6 +26,15 @@ from .models import PhotoModel
 
 # Helper functions
 # TODO: When there are too many, move them somewhere else
+
+def make_thumbnail(file):
+    with Image.open(file) as tn:
+        size = (16, 16)
+        name = Path("thumbnails/") / file.name
+        tn.thumbnail(size)
+        tn.save(upload_path / name)
+        return name.as_posix()
+
 
 def delete_all():
     for model in PhotoModel.objects.all():
@@ -38,7 +53,7 @@ def get_photos(year, page):
     end = page * 16
 
     entries = PhotoModel.objects.all().order_by('-id')
-    photos = [entry.file.url for entry in entries]
+    photos = [entry.thumbnail.url for entry in entries]
 
     return photos, pages
 
@@ -98,7 +113,8 @@ class AdminView(PermissionRequiredMixin, FormView):
 
     def form_valid(self, form):
         for file in form.files.pop("file"):
-            pm = PhotoModel(file=file)
+            thumbnail = make_thumbnail(file)
+            pm = PhotoModel(file=file, thumbnail=thumbnail)
             pm.save()
         return HttpResponseRedirect('/admin/')
 
