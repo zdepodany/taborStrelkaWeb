@@ -2,9 +2,6 @@
 
 {% load static %}
 
-{% block headerExtension %}
-
-{% endblock %}
 {% block content %}
 
     <section class="adminTab firstTab flexColumn">
@@ -19,7 +16,7 @@
 
     <section class="adminTab flexColumn adMarginTop">
         <span class="adminHubText">Odstranění fotek</span>
-        <button class="primaryButton adMarginTop">ODSTRANIT JEDNOTLIVĚ</button>
+        <a href="/deleteSinglePhoto/" class="primaryButton adMarginTop">ODSTRANIT JEDNOTLIVĚ</a>
         <button class="primaryButton redButton adMarginTop">ODSTRANIT VŠE</button>
     </section>
 
@@ -33,5 +30,10 @@
         <button class="primaryButton adMarginTop">ZMĚNIT HESLO</button>
     </section>
 
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "js/fileUpload.js" %}"></script>
 {% endblock %}
 
