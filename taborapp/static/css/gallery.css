@@ -66,3 +66,119 @@
 .activePagePicker:hover {
     background-color: #658131;
 }
+
+
+/* Photo Modal Window */
+
+.modalWrapper {
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalNav {
+    cursor: pointer;
+    width: 10rem;
+    aspect-ratio: 1 / 1;
+    background-color: #ABDB52;
+    border: none;
+    border-radius: 1.6rem;
+    transition: 0.2s;
+}
+
+.modalNav:hover {
+    background-color: #bcf159;
+}
+
+.modalNav:active {
+    transform: scale(0.88);
+}
+
+.modalNavIcon {
+    font-size: 5rem;
+}
+
+#leftPanel {
+    padding-right: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 15%;
+}
+
+#rightPanel {
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 15%;
+}
+
+#centerPanel {
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+}
+
+#topPanel {
+    width: 100%;
+    height: 5rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#bottomPanel {
+    width: 100%;
+    height: 55rem;
+    margin-top: 2.5rem;
+}
+
+#bottomPanel img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.modalDownloadButton {
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.6rem;
+    background-color: #ABDB52;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.modalDownloadButton:hover {
+    background-color: #bcf159;
+}
+
+.modalDownloadButton:active {
+    transform: scale(0.88);
+}
+
+.modalDownloadButton span {
+    margin-right: 0.75rem;
+}
+
+.modalClose {
+    cursor: pointer;
+    margin-left: 1.5rem;
+    height: 3.4rem;
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 0.6rem;
+    background-color: #ABDB52;
+    transition: 0.2s;
+}
+
+.modalClose:hover {
+    background-color: #bcf159;
+}
+
+.modalClose:active {
+    transform: scale(0.88);
+}
