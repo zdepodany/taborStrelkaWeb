@@ -95,6 +95,7 @@ class AdminLoginView(LoginView):
     template_name = "login.html"
     next_page = "/admin/"
     authentication_form = LoginForm
+    redirect_authenticated_user = True
 
 class AdminView(PermissionRequiredMixin, FormView):
     form_class = UploadFileForm
