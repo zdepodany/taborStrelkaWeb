@@ -46,6 +46,10 @@
 
 /* - Uploading documents - */
 
+.fTab {
+    margin-top: 3rem;
+}
+
 .docTab {
     width: 30%;
     padding: 1.8rem 4.8rem;
@@ -56,8 +60,6 @@
 .documentUploadWrapper {
     width: 100%;
     margin: 1rem 0;
-
-    background-color: aquamarine;
 }
 
 .docName {
@@ -95,7 +97,7 @@
     color: #ABDB52;
 }
 
-#realDocUpload {
+.realDocUpload {
     display: none;
 }
 
@@ -107,4 +109,13 @@
     border-radius: 0.7rem;
     color: #2B2A28;
     background-color: #ABDB52;
+    transition: 0.2s;
+}
+
+.docUploadButton:hover {
+    background-color: #9cc94a;
+}
+
+.docUploadButton:active {
+    transform: scale(0.80);
 }
