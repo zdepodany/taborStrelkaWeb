@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="{% static "css/gallery.css" %}">
 {% endblock %}
 {% block content %}
-    <section class="modalWrapper">
+    <section class="modalWrapper" id="modalBG">
 
         <section id="leftPanel">
-            <button class="modalNav flex flexCenter">
+            <button class="modalNav flex flexCenter" onclick="modalPrev({{ max }})">
                 <span class="material-icons modalNavIcon">navigate_before</span>
             </button>
         </section>
 
         <section id="centerPanel" class="flex flexColumn">
             <section id="topPanel" class="flex">
-                <a href="#" download class="modalDownloadButton flex flexCenter"><span class="material-icons-outlined">file_download</span> STÁHNOUT</a>
+                <a id="downloadPhoto" href="" download class="modalDownloadButton flex flexCenter"><span class="material-icons-outlined">file_download</span> STÁHNOUT</a>
                 <button class="modalClose flex flexCenter" onclick="closeModal()"><span class="material-icons-outlined">close</span></button>
             </section>
             <section id="bottomPanel">
-                <img src="{% static "img/Win11SE_bloom.png" %}">
+                <img src="" id="photoWrap">
             </section>
         </section>
 
         <section id="rightPanel">
-            <button class="modalNav flex flexCenter">
+            <button class="modalNav flex flexCenter" onclick="modalNext({{ max }})">
                 <span class="material-icons modalNavIcon">navigate_next</span>
             </button>
         </section>
@@ -46,8 +46,12 @@
         </section>
         <section class="gallery flex">
             {% for photo in photos %}
-                <img class="galleryPicture" onclick="openModal()" src="{{ photo }}" id="{{ "photo"|cat:forloop.counter0 }}">
+                <img class="galleryPicture"
+                    onclick="openModal({{forloop.counter0}}, {{max}})"
+                    src="{{ photo }}" id="photo{{ forloop.counter0 }}" alt=""
+                >
             {% endfor %}
+
         </section>
         <section class="pagePicker flex flexCenter">
             <a href="#" class="pageItem flex flexCenter">1</a>
