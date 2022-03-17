@@ -4,35 +4,65 @@
 {% block content %}
 
 <section class="docTab firstTab flexColumn">
+
+    {% for name in formnames_mandatory %}
     <div class="documentUploadWrapper flexColumn">
-        <span class="docName">1. Nástupní list</span>
-        <form class="docDownWrapper flex" action="" method="POST">
+
+        <span class="docName">{{ forloop.counter }}. {{ name }}</span>
+
+        <form class="docDownWrapper flex" action="/uploadDocuments/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
             <div class="infoWrapper flex">
-                <span class="downloadNumber flex flexCenter">1</span>
+                <span class="downloadNumber flex flexCenter">{{ forloop.counter }}</span>
                 <span class="docFileName">holyZadky.pdf</span>
             </div>
 
-            <button id="doc1_fakeButton" onclick="clickHidden('doc1', 'browse')" type="button" class="docUploadButton flex flexCenter"><span class="material-icons">file_upload</span></button>
-            <input id="doc1_browse" onchange="clickHidden('doc1', 'submit')" class="realDocUpload" type="file">
-            <input id="doc1_submit" class="realDocUpload" type="submit">
+            <button id="doc{{ forloop.counter0 }}_fakeButton"
+                    onclick="clickHidden('doc{{ forloop.counter0 }}_browse')"
+                    type="button" class="docUploadButton flex flexCenter">
+                <span class="material-icons">file_upload</span>
+            </button>
+
+            {{ form.file }}
+            {{ form.filetype }}
+            <input type="submit" id="doc{{ forloop.counter0 }}_submit" class="realDocUpload">
         </form>
     </div>
+    {% endfor %}
+
 </section>
 
 <section class="docTab fTab flexColumn">
+
+    {% for name in formnames_optional %}
     <div class="documentUploadWrapper flexColumn">
-        <span class="docName">1. Nástupní list</span>
-        <form class="docDownWrapper flex" action="" method="POST">
+
+        <span class="docName">{{ forloop.counter }}. {{ name }}</span>
+
+        <form class="docDownWrapper flex" action="/uploadDocuments/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
             <div class="infoWrapper flex">
-                <span class="downloadNumber flex flexCenter">1</span>
+                <span class="downloadNumber flex flexCenter">!</span>
                 <span class="docFileName">holyZadky.pdf</span>
             </div>
 
-            <button id="doc1_fakeButton" onclick="clickHidden('doc1', 'browse')" type="button" class="docUploadButton flex flexCenter"><span class="material-icons">file_upload</span></button>
-            <input id="doc1_browse" onchange="clickHidden('doc1', 'submit')" class="realDocUpload" type="file">
-            <input id="doc1_submit" class="realDocUpload" type="submit">
+            <button id="doc{{ forloop.counter0|add:"1024" }}_fakeButton"
+                    onclick="clickHidden('doc{{ forloop.counter0|add:"1024" }}_browse')"
+                    type="button" class="docUploadButton flex flexCenter">
+                <span class="material-icons">file_upload</span>
+            </button>
+
+            {{ form.file }}
+            {{ form.filetype }}
+
+            <input id="doc{{ forloop.counter0|add:"1024" }}_submit"
+                class="realDocUpload" type="submit">
         </form>
     </div>
+    {% endfor %}
+
 </section>
 
 {% endblock %}

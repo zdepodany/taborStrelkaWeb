@@ -14,7 +14,7 @@ from os import remove
 from time import localtime
 from pathlib import Path
 
-from .forms import UploadFileForm, LoginForm
+from .forms import LoginForm, UploadFileForm, UploadDocForm
 from .models import PhotoModel
 
 upload_path = Path("media/")
@@ -75,9 +75,43 @@ def gallery(request):
                 "max": len(photos) - 1
                 })
 
-class DocumentsUploadView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        return render(request, "uploadDocuments.html")
+class DocumentsUploadView(PermissionRequiredMixin, FormView):
+    form_class = UploadDocForm
+
+    template_name = "uploadDocuments.html"
+    login_url = "/login/"
+
+    permission_required = ("taborapp.view_docmodel",
+                           "taborapp.add_docmodel",
+                           "taborapp.delete_docmodel", 
+                        )
+    formnames_mandatory = [
+                "Nástupní list",
+                "PředNástupní list",
+                "PodNástupní list",
+                "VyNástupní list",
+            ]
+    formnames_optional = [
+                "OdNástupní list",
+                "ZaNástupní list",
+            ]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["username"] = self.request.user.email
+        context["formnames_mandatory"] = self.formnames_mandatory
+        context["formnames_optional"] = self.formnames_optional
+
+        return context
+
+    def form_valid(self, form):
+        breakpoint()
+        return HttpResponseRedirect('/admin/')
+
+    def form_invalid(self, form):
+        breakpoint()
+        return HttpResponseRedirect('/admin/')
 
 class DeleteSinglePhotoView(TemplateView):
     def get(self, request, *args, **kwargs):
