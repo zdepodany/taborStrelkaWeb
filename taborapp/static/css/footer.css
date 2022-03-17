@@ -1,101 +1,135 @@
 footer {
-    width: 100%;
-    margin-top: 5rem;
-    justify-content: center;
-    background-color: #2B2A28;
+  width: 100%;
+  margin-top: 5rem;
+  justify-content: center;
+  background-color: #2b2a28;
 }
 
 .mainFooterSection {
-    width: 50%;
-    margin: 3.5rem 0;
+  width: 50%;
+  margin: 3.5rem 0;
 }
 
 .subFooterSection {
-    width: 100%;
+  width: 100%;
 }
 
 .footerContentWrapper {
-    width: 100%;
-    color: #FFF;
+  width: 100%;
+  color: #fff;
 }
 
 .footerContentItem {
-    width: 100%;
-    height: 3.2rem;
-    margin: 0.5rem 0;
-    align-items: center;
+  width: 100%;
+  height: 3.2rem;
+  margin: 0.5rem 0;
+  align-items: center;
 }
 
 .icon {
-    cursor: default;
-    width: 3.2rem;
-    margin-right: 1.5rem;
-    color: #ABDB52;
+  cursor: default;
+  width: 3.2rem;
+  margin-right: 1.5rem;
+  color: #abdb52;
 }
 
 .footerText {
-    font-size: 1.6rem;
-    font-weight: 400;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .footerSubtext {
-    margin-left: 1rem;
-    font-weight: 300;
+  margin-left: 1rem;
+  font-weight: 300;
 }
 
 a .footerText {
-    text-decoration: underline;
-    transition: 0.2s;
+  text-decoration: underline;
+  transition: 0.2s;
 }
 
 a .footerText:hover {
-    color: #ABDB52;
+  color: #abdb52;
 }
 
 .footerInvoiceBoldText {
-    font-size: 1.7rem;
-    font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 600;
 }
 
 .footerInvoiceText {
-    margin-left: 1rem;
-    font-size: 1.6rem;
-    font-weight: 500;
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .footerLine {
-    height: 0.05rem;
-    width: 100%;
-    margin: 6rem 0 2rem 0;
-    background-color: rgb(156, 156, 156);
+  height: 0.05rem;
+  width: 100%;
+  margin: 6rem 0 2rem 0;
+  background-color: rgb(156, 156, 156);
 }
 
 .footerWebMapWrapper {
-    width: 100%;
-    justify-content: space-between;
-    color: #FFF;
+  width: 100%;
+  justify-content: space-between;
+  color: #fff;
 }
 
 .footerWebMapLinks a {
-    margin-right: 3.5rem;
-    font-size: 1.7rem;
-    font-weight: 600;
-    transition: 0.2s;
+  margin-right: 3.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 .footerWebMapLinks a:hover {
-    color: #ABDB52;
+  color: #abdb52;
 }
 
 .taborLink {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .taborLink a {
-    text-decoration: underline;
-    transition: 0.2s;
+  text-decoration: underline;
+  transition: 0.2s;
 }
 
 .taborLink a:hover {
-    color: #ABDB52;
+  color: #abdb52;
+}
+
+/* Responsivity */
+/* 1024px */
+
+@media only screen and (max-width: 1024px) {
+  .mainFooterSection {
+    width: 75%;
+  }
+}
+
+/* 768px */
+
+@media only screen and (max-width: 768px) {
+  .subFooterSection {
+    flex-direction: column;
+  }
+
+  .footerWebMapWrapper {
+    flex-wrap: wrap;
+  }
+
+  .footerWebMapLinks {
+    flex-wrap: wrap;
+  }
+
+  .footerWebMapLinks a {
+    margin-right: 2.3rem;
+    font-size: 1.2rem;
+  }
+
+  .taborLink {
+    margin-top: 1.5rem;
+  }
 }
