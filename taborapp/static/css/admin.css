@@ -1,121 +1,120 @@
 .adminTab {
-    width: 15%;
-    padding: 1.8rem 8rem;
-    border-radius: 1.6rem;
-    background-color: #FCF8EF;
+  width: 15%;
+  padding: 1.8rem 8rem;
+  border-radius: 1.6rem;
+  background-color: #fcf8ef;
 }
 
 .adminHubText {
-    font-size: 1.2rem;
-    font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
-
 
 /* Custom file upload input */
 
 #realFileUpload {
-    display: none;
+  display: none;
 }
-
 
 /* - Deleting single photos - */
 
 .adminGallery {
-    width: 90%;
-    justify-content: center;
-    flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .adminGallery img {
-    width: 10%;
-    margin: 0.5rem;
-    aspect-ratio: 1 / 1;
+  cursor: pointer;
+  width: 10%;
+  margin: 0.5rem;
+  aspect-ratio: 1 / 1;
+  transition: 0.1s;
 }
 
 .imagePicked {
-    border: solid 0.3rem green;
+  box-sizing: border-box;
+  border: solid 0.4rem #abdb52;
 }
-
 
 /* Small functions just for AdminHub */
 
 .adMarginTop {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
-
 
 /* - Uploading documents - */
 
 .fTab {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 .docTab {
-    width: 30%;
-    padding: 1.8rem 4.8rem;
-    border-radius: 1.6rem;
-    background-color: #FCF8EF;
+  width: 30%;
+  padding: 1.8rem 4.8rem;
+  border-radius: 1.6rem;
+  background-color: #fcf8ef;
 }
 
 .documentUploadWrapper {
-    width: 100%;
-    margin: 1rem 0;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .docName {
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2B2A28;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #2b2a28;
 }
 
 .docDownWrapper {
-    width: 100%;
-    justify-content: space-between;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .infoWrapper {
-    align-items: center;
+  align-items: center;
 }
 
 .docFileName {
-    cursor: default;
-    margin-left: 1.5rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #707070;
+  cursor: default;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #707070;
 }
 
 .downloadNumber {
-    cursor: default;
-    width: 5rem;
-    height: 5rem;
-    font-size: 2rem;
-    font-weight: 700;
-    border-radius: 0.7rem;
-    background-color: #2B2A28;
-    color: #ABDB52;
+  cursor: default;
+  width: 5rem;
+  height: 5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  border-radius: 0.7rem;
+  background-color: #2b2a28;
+  color: #abdb52;
 }
 
 .realDocUpload {
-    display: none;
+  display: none;
 }
 
 .docUploadButton {
-    cursor: pointer;
-    width: 5rem;
-    height: 5rem;
-    border: none;
-    border-radius: 0.7rem;
-    color: #2B2A28;
-    background-color: #ABDB52;
-    transition: 0.2s;
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  border-radius: 0.7rem;
+  color: #2b2a28;
+  background-color: #abdb52;
+  transition: 0.2s;
 }
 
 .docUploadButton:hover {
-    background-color: #9cc94a;
+  background-color: #9cc94a;
 }
 
 .docUploadButton:active {
-    transform: scale(0.80);
+  transform: scale(0.8);
 }
