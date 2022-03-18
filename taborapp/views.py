@@ -15,7 +15,7 @@ from time import localtime
 from pathlib import Path
 
 from .forms import LoginForm, UploadFileForm, UploadDocForm
-from .models import PhotoModel
+from .models import PhotoModel, DocModel
 
 upload_path = Path("media/")
 
@@ -35,8 +35,8 @@ def make_thumbnail(file):
         tn.save(upload_path / name)
         return name.as_posix()
 
-def delete_all():
-    for model in PhotoModel.objects.all():
+def delete_all(model_class, **kwargs):
+    for model in model_class.objects.filter(**kwargs):
         remove(model.file.path)
         model.delete()
 
@@ -75,47 +75,24 @@ def gallery(request):
                 "max": len(photos) - 1
                 })
 
-class DocumentsUploadView(PermissionRequiredMixin, FormView):
-    form_class = UploadDocForm
-
-    template_name = "uploadDocuments.html"
-    login_url = "/login/"
-
-    permission_required = ("taborapp.view_docmodel",
-                           "taborapp.add_docmodel",
-                           "taborapp.delete_docmodel", 
+class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
+    permission_required = ("taborapp.view_photomodel",
+                           "taborapp.add_photomodel",
+                           "taborapp.delete_photomodel", 
                         )
-    formnames_mandatory = [
-                "Nástupní list",
-                "PředNástupní list",
-                "PodNástupní list",
-                "VyNástupní list",
-            ]
-    formnames_optional = [
-                "OdNástupní list",
-                "ZaNástupní list",
-            ]
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context["username"] = self.request.user.email
-        context["formnames_mandatory"] = self.formnames_mandatory
-        context["formnames_optional"] = self.formnames_optional
-
-        return context
-
-    def form_valid(self, form):
-        breakpoint()
-        return HttpResponseRedirect('/admin/')
-
-    def form_invalid(self, form):
-        breakpoint()
-        return HttpResponseRedirect('/admin/')
-
-class DeleteSinglePhotoView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "deleteSinglePhoto.html")
+
+class DeleteAllPhotosView(PermissionRequiredMixin, TemplateView):
+    permission_required = ("taborapp.view_photomodel",
+                           "taborapp.add_photomodel",
+                           "taborapp.delete_photomodel", 
+                        )
+
+    def get(self, request, *args, **kwargs):
+        delete_all(PhotoModel)
+        return HttpResponseRedirect('/admin/')
 
 class DownloadsView(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -154,5 +131,49 @@ class AdminView(PermissionRequiredMixin, FormView):
             thumbnail = make_thumbnail(file)
             pm = PhotoModel(file=file, thumbnail=thumbnail)
             pm.save()
+        return HttpResponseRedirect('/admin/')
+
+class DocumentsUploadView(PermissionRequiredMixin, FormView):
+    form_class = UploadDocForm
+
+    template_name = "uploadDocuments.html"
+    login_url = "/login/"
+
+    permission_required = ("taborapp.view_docmodel",
+                           "taborapp.add_docmodel",
+                           "taborapp.delete_docmodel", 
+                        )
+
+    formnames_mandatory = [
+                "Nástupní list",
+                "PředNástupní list",
+                "PodNástupní list",
+                "VyNástupní list",
+            ]
+
+    formnames_optional = [
+                "OdNástupní list",
+                "ZaNástupní list",
+            ]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["username"] = self.request.user.email
+        context["formnames_mandatory"] = self.formnames_mandatory
+        context["formnames_optional"] = self.formnames_optional
+
+        return context
+
+    def form_valid(self, form):
+        breakpoint()
+        filetype = form.cleaned_data["filetype"]
+        delete_all(DocModel, filetype=filetype)
+        doc = DocModel(**form.cleaned_data)
+        doc.save()
+        return HttpResponseRedirect('/admin/')
+
+    def form_invalid(self, form):
+        breakpoint()
         return HttpResponseRedirect('/admin/')
 
