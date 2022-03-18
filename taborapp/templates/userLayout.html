@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
+{% load static %}
+
 {% block navbar %}
     <section class="navbar">
         <nav class="navbarButtonWrap">
@@ -8,7 +10,18 @@
         </nav>
         <div class="navbarLoginWrap">
             <a href="/login/" class="navbarLoginButton"><span class="material-icons">login</span></a>
+            <button id="burger" class="navbarLoginButton"><span class="material-icons-round">menu</span></button>
         </div>
+    </section>
+    <section class="burgerMenuWrapper">
+        <section class="burgerBtnsTop">
+            <a href="/"><span>DOMŮ</span></a>
+            <a href="/yearPick/"><span>FOTOGALERIE</span></a>
+            <a href="/downloads/"><span>KE STAŽENÍ</span></a>
+        </section>
+        <section class="burgerBtnsBottom">
+            <a href="/login/"><span>PŘIHLÁSIT</span></a>
+        </section>
     </section>
 {% endblock %}
 {% block footer %}
@@ -56,8 +69,13 @@
                     <a href="/downloads/">Ke stažení</a>
                     <a href="/login/">Přihlášení</a>
                 </div>
-                <span class="taborLink">© 2022 <a href="https://zdenda.xyz" target="_blank">Zdeněk Podaný</a> & <a href="https://plch.xyz" target="_blank">Marcel Plch</a></span>
+                <span class="taborLink">© 2022 <a href="https://zdenda.xyz" target="_blank">Zdeněk Podaný</a> & <a
+                        href="https://plch.xyz" target="_blank">Marcel Plch</a></span>
             </section>
         </section>
     </footer>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "js/burger.js" %}"></script>
 {% endblock %}
