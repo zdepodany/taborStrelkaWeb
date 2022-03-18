@@ -83,7 +83,7 @@
 }
 
 .burgerMenuWrapper {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -165,6 +165,10 @@
 
     .navbarLoginWrap a {
         display: none;
+    }
+
+    .burgerMenuWrapper {
+        display: flex;
     }
 
     #burger {
