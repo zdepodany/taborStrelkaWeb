@@ -60,3 +60,32 @@
 .downloadDocumentButton span {
     font-size: 3.5rem;
 }
+
+
+/* Responsivity */
+/* 1000px */
+
+@media only screen and (max-width: 1000px) {
+    .downloadNumber {
+        width: 5rem;
+        min-width: 5rem;
+        height: 5rem;
+        font-size: 2rem;
+    }
+
+    .downloadName {
+        font-size: 1.4rem;
+    }
+
+    .downloadText a {
+        display: none;
+    }
+}
+
+/* 600px */
+
+@media only screen and (max-width: 600px) {
+    .downloadNumber {
+        display: none;
+    }
+}
