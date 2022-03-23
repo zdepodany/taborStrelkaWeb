@@ -1,6 +1,4 @@
-Unfinished website from 7/2021, originally was on private "gitea" repository which was deleted due to unpaid bills, bcs my co-worker was an idiot. I managed to save latest version and upload it here.
+# Tábor Střelka Web
 
-Should be finished soon.
-
-# taborStrelkaWeb
-
+Webové stránky pro lidi stojící za pořádáním "poloskautského" tábora v přírodě.
+Účelem je prezentace fotek a možnost stažení dokumentů pro případné zájemce.
