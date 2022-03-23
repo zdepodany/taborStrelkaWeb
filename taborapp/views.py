@@ -19,13 +19,25 @@ from .models import PhotoModel, DocModel
 
 upload_path = Path("media/")
 
+formnames_mandatory = [
+            "Nástupní list",
+            "Upozornění rodičů zdravotníkovi",
+            "Určení osoby oprávněné",
+            "Zpracování osobních údajů",
+        ]
+
+formnames_voluntary = [
+            "Pokyny pro účastníky tábora",
+            "Táborový řád",
+        ]
+
 # TODO:
 #
 # 1) It is a good practice to handle forms with
 #    form classes and database models. Do that.
+# 2) There are too many helper functions, move them somewhere else
+# 3) Get rid of spaghetti code
 
-# Helper functions
-# TODO: When there are too many, move them somewhere else
 
 def make_thumbnail(file):
     with Image.open(file) as tn:
@@ -55,6 +67,31 @@ def get_photos(year, page):
     photos = [entry.thumbnail.url for entry in entries]
 
     return photos, pages
+
+def get_docs(amount_mand, amount_vol):
+    mandatory = []
+    voluntary = []
+
+    for i in range(amount_mand):
+        query = DocModel.objects.filter(filetype=i)
+        if not query:
+            query = None
+        else:
+            query = query.get()
+
+        mandatory.append(query)
+
+
+    for i in range(amount_vol):
+        query = DocModel.objects.filter(filetype=i+1024)
+        if not query:
+            query = None
+        else:
+            query = query.get()
+
+        voluntary.append(query)
+
+    return mandatory, voluntary
 
 # Create your views here.
 
@@ -95,8 +132,56 @@ class DeleteAllPhotosView(PermissionRequiredMixin, TemplateView):
         return HttpResponseRedirect('/admin/')
 
 class DownloadsView(TemplateView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        manlen = len(formnames_mandatory)
+        vollen = len(formnames_voluntary)
+
+        mandatory_docs, voluntary_docs = get_docs(manlen, vollen)
+
+        mandatory = []
+        voluntary = []
+
+        for i in range(manlen):
+            if mandatory_docs[i]:
+                doc = mandatory_docs[i].file.name.rsplit("/")[-1]
+                url = mandatory_docs[i].file.url
+            else:
+                doc = "Not Found"
+                url = ""
+
+            segment = {
+                    "url": url,
+                    "doc": doc,
+                    "name": formnames_mandatory[i],
+                }
+            mandatory.append(segment)
+
+        for i in range(vollen):
+            if voluntary_docs[i]:
+                doc = voluntary_docs[i].file.name.rsplit("/")[-1]
+                url = voluntary_docs[i].file.url
+            else:
+                doc = "Not Found"
+                url = ""
+
+            segment = {
+                    "url": url,
+                    "doc": doc,
+                    "name": formnames_voluntary[i],
+                }
+            voluntary.append(segment)
+
+        context["username"] = self.request.user.email
+        context["mandatory"] = mandatory
+        context["voluntary"] = voluntary
+
+        return context
     def get(self, request, *args, **kwargs):
-        return render(request, "downloads.html")
+        ctx = self.get_context_data()
+        return render(request, "downloads.html", ctx)
 
 class YearPickView(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -144,29 +229,49 @@ class DocumentsUploadView(PermissionRequiredMixin, FormView):
                            "taborapp.delete_docmodel", 
                         )
 
-    formnames_mandatory = [
-                "Nástupní list",
-                "PředNástupní list",
-                "PodNástupní list",
-                "VyNástupní list",
-            ]
-
-    formnames_optional = [
-                "OdNástupní list",
-                "ZaNástupní list",
-            ]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        manlen = len(formnames_mandatory)
+        vollen = len(formnames_voluntary)
+
+        mandatory_docs, voluntary_docs = get_docs(manlen, vollen)
+
+        mandatory = []
+        voluntary = []
+
+        for i in range(manlen):
+            if mandatory_docs[i]:
+                doc = mandatory_docs[i].file.name.rsplit("/")[-1]
+            else:
+                doc = "Not Found"
+
+            segment = {
+                    "doc": doc,
+                    "name": formnames_mandatory[i],
+                }
+            mandatory.append(segment)
+
+        for i in range(vollen):
+            if voluntary_docs[i]:
+                doc = voluntary_docs[i].file.name.rsplit("/")[-1]
+            else:
+                doc = "Not Found"
+
+            segment = {
+                    "doc": doc,
+                    "name": formnames_voluntary[i],
+                }
+            voluntary.append(segment)
+
         context["username"] = self.request.user.email
-        context["formnames_mandatory"] = self.formnames_mandatory
-        context["formnames_optional"] = self.formnames_optional
+        context["mandatory"] = mandatory
+        context["voluntary"] = voluntary
 
         return context
 
     def form_valid(self, form):
-        breakpoint()
         filetype = form.cleaned_data["filetype"]
         delete_all(DocModel, filetype=filetype)
         doc = DocModel(**form.cleaned_data)
@@ -174,6 +279,5 @@ class DocumentsUploadView(PermissionRequiredMixin, FormView):
         return HttpResponseRedirect('/admin/')
 
     def form_invalid(self, form):
-        breakpoint()
         return HttpResponseRedirect('/admin/')
 

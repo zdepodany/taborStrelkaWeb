@@ -5,17 +5,17 @@
 
 <section class="docTab firstTab flexColumn">
 
-    {% for name in formnames_mandatory %}
+    {% for segment in mandatory %}
     <div class="documentUploadWrapper flexColumn">
 
-        <span class="docName">{{ forloop.counter }}. {{ name }}</span>
+        <span class="docName">{{ forloop.counter }}. {{ segment.name }}</span>
 
         <form class="docDownWrapper flex" action="/uploadDocuments/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="infoWrapper flex">
                 <span class="downloadNumber flex flexCenter">{{ forloop.counter }}</span>
-                <span class="docFileName">holyZadky.pdf</span>
+                <span class="docFileName">{{segment.doc}}</span>
             </div>
 
             <button id="doc{{ forloop.counter0 }}_fakeButton"
@@ -35,17 +35,17 @@
 
 <section class="docTab fTab flexColumn">
 
-    {% for name in formnames_optional %}
+    {% for segment in voluntary %}
     <div class="documentUploadWrapper flexColumn">
 
-        <span class="docName">{{ forloop.counter }}. {{ name }}</span>
+        <span class="docName">{{ forloop.counter }}. {{ segment.name }}</span>
 
         <form class="docDownWrapper flex" action="/uploadDocuments/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="infoWrapper flex">
                 <span class="downloadNumber flex flexCenter">!</span>
-                <span class="docFileName">holyZadky.pdf</span>
+                <span class="docFileName">{{ segment.doc }}</span>
             </div>
 
             <button id="doc{{ forloop.counter0|add:"1024" }}_fakeButton"
