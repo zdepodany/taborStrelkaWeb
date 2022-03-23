@@ -27,7 +27,7 @@
 .galleryPicture {
     width: 21%;
     aspect-ratio: 1 / 1;
-    margin: 1.5rem 1.5rem;
+    margin: 1.5rem;
 }
 
 /* Pages picker */
@@ -76,7 +76,7 @@
     display: none;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modalNav {
@@ -182,3 +182,69 @@
 .modalClose:active {
     transform: scale(0.88);
 }
+
+
+/* Responsivity */
+/* 1000px */
+
+@media only screen and (max-width: 1000px) {
+    .yearAndButton {
+        flex-direction: column;
+    }
+
+    .pagePicker {
+        margin: 3rem 0;
+    }
+  }
+
+
+/* 600px */
+
+@media only screen and (max-width: 600px) {
+    .yearAndButton {
+        width: 100%;
+    }
+
+    .firstTab {
+        margin-top: 5rem;
+    }
+
+    .gallery {
+        width: 80%;
+    }
+
+    .galleryPicture {
+        width: 25%;
+        margin: 1rem;
+    }
+
+
+    /* Modal */
+
+    #leftPanel {
+        width: 10%;
+        padding: 0 0.6rem;
+    }
+
+    #centerPanel {
+        width: 80%;
+    }
+
+    #rightPanel {
+        width: 10%;
+        padding: 0 0.6rem;
+    }
+
+    .modalNav {
+        width: 90%;
+        height: 10rem;
+    }
+
+    .modalNavIcon {
+        font-size: 4rem;
+    }
+
+    #bottomPanel {
+        height: 30%;
+    }
+  }

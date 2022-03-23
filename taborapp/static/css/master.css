@@ -65,7 +65,7 @@ p {
 }
 
 .tab {
-    width: 75rem;
+    width: 50%;
     padding: 2.5rem 6rem;
     border-radius: 1.6rem;
     background-color: #FCF8EF;
@@ -162,4 +162,28 @@ p {
 
 .whiteColor {
     color: #FFF;
+}
+
+
+/* Responsivity */
+/* 1000px */
+
+@media only screen and (max-width: 1000px) {
+    .tab {
+        padding: 2rem 4rem;
+    }
+  }
+
+/* 768px */
+
+@media only screen and (max-width: 768px) {
+  h1 {
+      font-size: 4rem;
+      margin-block-start: 0;
+      margin-block-end: 0;
+  }
+
+  p {
+      font-size: 1.3rem;
+  }
 }
