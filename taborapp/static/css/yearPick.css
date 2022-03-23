@@ -1,13 +1,36 @@
 #yearPickSection {
-    min-height: 100vh;
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .yearPick {
-    width: 70%;
+    width: 75%;
     justify-content: space-evenly;
+}
+
+.tab {
+    width: 75%;
 }
 
 .yearPick .primaryButton {
     width: 20%;
     text-align: center;
+}
+
+
+/* Responsivity */
+
+@media only screen and (max-width: 600px) {
+    .yearPick {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .yearPick .primaryButton {
+        width: 70%;
+        margin: 1rem 0;
+    }
 }
