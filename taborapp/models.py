@@ -10,3 +10,7 @@ class PhotoModel(models.Model):
     file = models.ImageField(upload_to="photos/")
     thumbnail = models.ImageField(upload_to="thumbnails/", null=True)
 
+class DocModel(models.Model):
+    file = models.ImageField(upload_to="docs/")
+    filetype = models.BigIntegerField()
+

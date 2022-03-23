@@ -9,75 +9,35 @@
 {% block content %}
     <section class="mainSection firstTab tab">
 
+    {% for segment in mandatory %}
         <div class="downloadItem flex">
             <div class="downloadInformation flex">
-                <span class="downloadNumber flex flexCenter">1</span>
+                <span class="downloadNumber flex flexCenter">{{ forloop.counter }}</span>
                 <div class="downloadText flex">
-                    <span class="downloadName greyColor">Nástupní list</span>
-                    <a href="#" download><span class="downloadFileName">nastupniListTabor2022.pdf</span></a>
+                    <span class="downloadName greyColor">{{ segment.name }}</span>
+                    <a href="{{ segment.url }}" download><span class="downloadFileName">{{ segment.doc }}</span></a>
                 </div>
             </div>
-            <a href="#" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
+            <a href="{{ segment.url }}" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
         </div>
-
-        <div class="downloadItem flex">
-            <div class="downloadInformation flex">
-                <span class="downloadNumber flex flexCenter">2</span>
-                <div class="downloadText flex">
-                    <span class="downloadName greyColor">Upozornění rodičů zdravotníkovi</span>
-                    <a href="#" download><span class="downloadFileName">upozorneniZdravotnikTabor2022.pdf</span></a>
-                </div>
-            </div>
-            <a href="#" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
-        </div>
-
-        <div class="downloadItem flex">
-            <div class="downloadInformation flex">
-                <span class="downloadNumber flex flexCenter">3</span>
-                <div class="downloadText flex">
-                    <span class="downloadName greyColor">Určení osoby oprávněné</span>
-                    <a href="#" download><span class="downloadFileName">urceniOsobyOpravneneTabor2022.pdf</span></a>
-                </div>
-            </div>
-            <a href="#" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
-        </div>
-
-        <div class="downloadItem flex">
-            <div class="downloadInformation flex">
-                <span class="downloadNumber flex flexCenter">4</span>
-                <div class="downloadText flex">
-                    <span class="downloadName greyColor">Zpracování osobních údajů</span>
-                    <a href="#" download><span class="downloadFileName">GDPRTabor2022.pdf</span></a>
-                </div>
-            </div>
-            <a href="#" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
-        </div>
+    {% endfor %}
 
     </section>
 
     <section class="tab" style="margin-top: 3rem;">
 
+    {% for segment in voluntary %}
         <div class="downloadItem flex">
             <div class="downloadInformation flex">
                 <span class="downloadNumber flex flexCenter">!</span>
                 <div class="downloadText flex">
-                    <span class="downloadName greyColor">Pokyny pro účastníky tábora</span>
-                    <a href="{% static "docs/pokynyTabor2022.pdf" %}" download><span class="downloadFileName">pokynyTabor2022.pdf</span></a>
+                    <span class="downloadName greyColor">{{ segment.name }}</span>
+                    <a href="{{ segment.url }}" download><span class="downloadFileName">{{ segment.doc }}</span></a>
                 </div>
             </div>
-            <a href="{% static "docs/pokynyTabor2022.pdf" %}" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
+            <a href="{{ segment.url }}" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
         </div>
-
-        <div class="downloadItem flex">
-            <div class="downloadInformation flex">
-                <span class="downloadNumber flex flexCenter">!</span>
-                <div class="downloadText flex">
-                    <span class="downloadName greyColor">Táborový řád</span>
-                    <a href="{% static "docs/radTabor2022.pdf" %}" download><span class="downloadFileName">radTabor2022.pdf</span></a>
-                </div>
-            </div>
-            <a href="{% static "docs/radTabor2022.pdf" %}" class="downloadDocumentButton flex flexCenter" download=""><span class="material-icons greyColor">file_download</span></a>
-        </div>
+    {% endfor %}
 
     </section>
 {% endblock %}

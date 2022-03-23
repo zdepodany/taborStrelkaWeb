@@ -1,6 +1,6 @@
 from django.urls import include, re_path
 # TODO: Port all to classes
-from taborapp.views import index, gallery, AdminView, AdminLoginView, YearPickView, DownloadsView, DeleteSinglePhotoView, DocumentsUploadView
+from taborapp.views import index, gallery, AdminView, AdminLoginView, YearPickView, DownloadsView, DeleteSinglePhotoView, DeleteAllPhotosView, DocumentsUploadView
 
 urlpatterns = [
     re_path(r'^$', index),
@@ -10,6 +10,7 @@ urlpatterns = [
     re_path(r'^downloads/', DownloadsView.as_view()),
     re_path(r'^login/', AdminLoginView.as_view()),
     re_path(r'^deleteSinglePhoto/', DeleteSinglePhotoView.as_view()),
+    re_path(r'^deleteAllPhotos/', DeleteAllPhotosView.as_view()),
     re_path(r'^uploadDocuments/', DocumentsUploadView.as_view()),
 ]
 
