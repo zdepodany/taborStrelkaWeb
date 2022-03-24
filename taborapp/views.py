@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, View
 
 from PIL import Image
 
@@ -186,6 +186,11 @@ class DownloadsView(TemplateView):
 class YearPickView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "yearPick.html")
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect('/')
 
 class AdminLoginView(LoginView):
     template_name = "login.html"

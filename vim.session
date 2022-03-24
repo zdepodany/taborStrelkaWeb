@@ -19,6 +19,9 @@ tabnew
 tabnew
 tabnew
 tabnew
+tabnew
+tabnew
+tabnew
 tabrewind
 edit tabor/settings.py
 argglobal
@@ -52,11 +55,31 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 11 - ((10 * winheight(0) + 28) / 57)
+let s:l = 14 - ((13 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11
+keepjumps 14
+normal! 039|
+tabnext
+edit taborapp/urls.py
+argglobal
+balt taborapp/models.py
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 3 - ((2 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 3
 normal! 0
 tabnext
 edit taborapp/backends.py
@@ -72,12 +95,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 28) / 57)
+let s:l = 32 - ((31 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 016|
+keepjumps 32
+normal! 0
 tabnext
 edit taborapp/views.py
 argglobal
@@ -92,16 +115,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 124 - ((56 * winheight(0) + 28) / 57)
+let s:l = 194 - ((25 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 124
+keepjumps 194
 normal! 0
 tabnext
-edit taborapp/forms.py
+edit taborapp/templates/uploadDocuments.html
 argglobal
-balt taborapp/views.py
+balt taborapp/templates/gallery.html
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -112,16 +135,96 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 20 - ((19 * winheight(0) + 28) / 57)
+let s:l = 11 - ((10 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 20
+keepjumps 11
+normal! 031|
+tabnext
+edit taborapp/templates/downloads.html
+argglobal
+balt taborapp/templates/uploadDocuments.html
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 7 - ((5 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 7
+normal! 028|
+tabnext
+edit taborapp/templates/admin.html
+argglobal
+balt taborapp/templates/uploadDocuments.html
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 13 - ((12 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 13
+normal! 033|
+tabnext
+edit taborapp/static/js/docUpload.js
+argglobal
+balt taborapp/static/js/modal.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 30 - ((29 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 30
+normal! 019|
+tabnext
+edit taborapp/static/js/modal.js
+argglobal
+balt taborapp/static/js/scripts.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 57 - ((56 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 57
 normal! 0
 tabnext
-edit adduser.py
+edit taborapp/static/js/deletePhotoPick.js
 argglobal
-balt taborapp/forms.py
+balt taborapp/static/js/docUpload.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -138,65 +241,33 @@ keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
-tabnext
-edit taborapp/templates/login.html
-argglobal
-balt taborapp/forms.py
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 20 - ((19 * winheight(0) + 28) / 57)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 20
-normal! 0
-tabnext
-edit taborapp/static/js/scripts.js
-argglobal
-balt taborapp/templates/gallery.html
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 28) / 57)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 17
-normal! 0
 tabnext 5
 set stal=1
 badd +1 tabor/settings.py
-badd +23 tabor/urls.py
-badd +3 taborapp/urls.py
-badd +1 taborapp/views.py
-badd +1 taborapp/forms.py
 badd +1 taborapp/models.py
+badd +2 taborapp/urls.py
+badd +1 taborapp/backends.py
+badd +0 taborapp/views.py
+badd +1 taborapp/templates/uploadDocuments.html
+badd +19 taborapp/templates/admin.html
+badd +1 taborapp/static/js/docUpload.js
+badd +1 taborapp/static/js/deletePhotoPick.js
+badd +40 taborapp/forms.py
+badd +50 taborapp/templates/gallery.html
+badd +1 taborapp/static/js/modal.js
+badd +8 taborapp/static/js/scripts.js
+badd +6 taborapp/templates/adminLayout.html
+badd +121 taborapp/static/css/master.css
+badd +20 taborapp/templates/login.html
+badd +23 tabor/urls.py
 badd +14 taborapp/templates/layout.html
-badd +0 taborapp/templates/gallery.html
 badd +5 taborapp/templatetags/taborapp_extras.py
-badd +1 taborapp/static/js/scripts.js
-badd +33 taborapp/templates/admin.html
-badd +0 taborapp/django_tags.py
+badd +1 taborapp/django_tags.py
 badd +5 forms.py
 badd +1 taborapp/util.py
-badd +0 taborapp/templates/login.html
-badd +0 adduser.py
-badd +0 taborapp/backends.py
+badd +1 adduser.py
+badd +1 taborapp/static/js/fileUpload.js
+badd +0 taborapp/templates/downloads.html
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -208,7 +279,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
