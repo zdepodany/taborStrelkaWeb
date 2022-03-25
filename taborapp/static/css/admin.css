@@ -137,4 +137,8 @@
     .downloadNumber {
       display: none;
     }
+
+    .adminGallery img {
+      width: 30%;
+    }
   }
