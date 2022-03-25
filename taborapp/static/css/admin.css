@@ -118,3 +118,27 @@
 .docUploadButton:active {
   transform: scale(0.8);
 }
+
+
+/* Responsivity */
+/* 600px */
+
+@media only screen and (max-width: 600px) {
+    .adminTab {
+        width: 60%;
+        padding: 1.8rem 4rem;
+    }
+
+    .docTab {
+      width: 60%;
+      padding: 1.5rem 3rem;
+    }
+
+    .downloadNumber {
+      display: none;
+    }
+
+    .adminGallery img {
+      width: 30%;
+    }
+  }

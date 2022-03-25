@@ -170,6 +170,7 @@ p {
 
 @media only screen and (max-width: 1000px) {
     .tab {
+        width: 75%;
         padding: 2rem 4rem;
     }
   }
@@ -186,4 +187,16 @@ p {
   p {
       font-size: 1.3rem;
   }
+}
+
+/* 600px */
+
+@media only screen and (max-width: 600px) {
+    .inputHeader {
+        width: 75%;
+    }
+
+    .input {
+        width: 70%;
+    }
 }
