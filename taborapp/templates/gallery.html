@@ -35,14 +35,17 @@
 
     <section class="mainSection firstTab">
         <section class="yearAndButton flex">
-            <h2>Rok 2021</h2>
+            <h2>Rok {{year}}</h2>
             <a href="#" class="primaryButton flex flexCenter" download><span class="material-icons">file_download</span>STÁHNOUT</a>
         </section>
         <section class="pagePicker flex flexCenter">
-            <a href="#" class="pageItem flex flexCenter">1</a>
-            <a href="#" class="pageItem flex flexCenter activePagePicker">2</a>
-            <a href="#" class="pageItem flex flexCenter">3</a>
-            <a href="#" class="pageItem flex flexCenter">4</a>
+            {% for i in pages %}
+                {% if page == i %}
+                    <a href="/gallery/?page={{i}}" class="pageItem flex flexCenter activePagePicker">{{i}}</a>
+                {% else %}
+                    <a href="/gallery/?page={{i}}" class="pageItem flex flexCenter">{{i}}</a>
+                {% endif %}
+            {% endfor %}
         </section>
         <section class="gallery flex">
             {% for photo in photos %}
@@ -54,10 +57,13 @@
 
         </section>
         <section class="pagePicker flex flexCenter">
-            <a href="#" class="pageItem flex flexCenter">1</a>
-            <a href="#" class="pageItem flex flexCenter activePagePicker">2</a>
-            <a href="#" class="pageItem flex flexCenter">3</a>
-            <a href="#" class="pageItem flex flexCenter">4</a>
+            {% for i in pages %}
+                {% if page == i %}
+                    <a href="/gallery/?page={{i}}" class="pageItem flex flexCenter activePagePicker">{{i}}</a>
+                {% else %}
+                    <a href="/gallery/?page={{i}}" class="pageItem flex flexCenter">{{i}}</a>
+                {% endif %}
+            {% endfor %}
         </section>
     </section>
 {% endblock %}
