@@ -41,7 +41,8 @@ formnames_voluntary = [
 
 def make_thumbnail(file):
     with Image.open(file) as tn:
-        size = (16, 16)
+        breakpoint()
+        size = (256, 256)
         name = Path("thumbnails/") / file.name
         tn.thumbnail(size)
         tn.save(upload_path / name)
@@ -53,7 +54,8 @@ def delete_all(model_class, **kwargs):
         model.delete()
 
 def get_photos(year, page):
-    pages = PhotoModel.objects.all().count() // 16 + 1
+    entries = PhotoModel.objects.filter(year=year).order_by("-id")
+    pages = entries.count() // 16 + 1
 
     # Someone asked for a page that doesn't exist
     # Return all non-existent photos
@@ -63,8 +65,7 @@ def get_photos(year, page):
     begin = (page - 1) * 16
     end = page * 16
 
-    entries = PhotoModel.objects.all().order_by('-id')
-    photos = [entry.thumbnail.url for entry in entries]
+    photos = [entry.thumbnail.url for entry in entries[begin:end]]
 
     return photos, pages
 
@@ -100,13 +101,22 @@ def index(request):
 
 def gallery(request):
     args = request.GET
+    year = args.get("year", None)
+    page = args.get("page", 1)
 
+    if not year:
+        year = request.session.get("year", localtime().tm_year)
+    else:
+        request.session["year"] = year
 
-    photos, pages = get_photos(0, 0)
+    year = int(year)
+    page = int(page)
+
+    photos, pages = get_photos(year, page)
 
     return render(request, "gallery.html", {
-                "page": 0,
-                "year": 0,
+                "page": page,
+                "year": year,
                 "photos": photos,
                 "pages": range(1, pages + 1),
                 "max": len(photos) - 1
@@ -217,9 +227,10 @@ class AdminView(PermissionRequiredMixin, FormView):
         return context
 
     def form_valid(self, form):
+        year = localtime().tm_year
         for file in form.files.pop("file"):
             thumbnail = make_thumbnail(file)
-            pm = PhotoModel(file=file, thumbnail=thumbnail)
+            pm = PhotoModel(file=file, thumbnail=thumbnail, year=year)
             pm.save()
         return HttpResponseRedirect('/admin/')
 
