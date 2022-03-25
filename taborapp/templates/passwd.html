@@ -1,0 +1,29 @@
+{% extends "userLayout.html" %}
+{% block content %}
+
+<section class="tab firstTab">
+    <form class="adminLoginForm" name="login" method="POST" action="/passwordChange/">
+        {% csrf_token %}
+
+        <div class="inputWrap">
+            <span class="inputHeader">Původní heslo</span>
+            {{ form.old_password }}
+        </div>
+
+        <div class="inputWrap">
+            <span class="inputHeader">Nové heslo</span>
+            {{ form.new_password1 }}
+        </div>
+
+        <div class="inputWrap">
+            <span class="inputHeader">Potvrdit nové heslo</span>
+            {{ form.new_password2 }}
+        </div>
+        <div class="formErrors">
+            {{form.errors}}
+        </div>
+        <input type="submit" value="PŘIHLÁSIT" class="primaryButton">
+    </form>
+</section>
+
+{% endblock %}

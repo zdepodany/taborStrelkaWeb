@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='E-mail')
@@ -10,6 +10,19 @@ class LoginForm(AuthenticationForm):
           {'class': 'input'}
         )
         self.fields['password'].widget.attrs.update(
+          {'class': 'input'}
+        )
+class PasswdForm(PasswordChangeForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].widget.attrs.update(
+          {'class': 'input'}
+        )
+        self.fields['new_password1'].widget.attrs.update(
+          {'class': 'input'}
+        )
+        self.fields['new_password2'].widget.attrs.update(
           {'class': 'input'}
         )
 
