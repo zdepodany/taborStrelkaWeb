@@ -10,24 +10,24 @@
     <section class="modalWrapper" id="modalBG">
 
         <section id="leftPanel">
-            <button class="modalNav flex flexCenter" onclick="modalPrev({{ max }})">
-                <span class="material-icons modalNavIcon">navigate_before</span>
+            <button class="modalNav flex flexCenter noClose" onclick="modalPrev({{ max }})">
+                <span class="material-icons modalNavIcon noClose">navigate_before</span>
             </button>
         </section>
 
         <section id="centerPanel" class="flex flexColumn">
             <section id="topPanel" class="flex">
-                <a id="downloadPhoto" href="" download class="modalDownloadButton flex flexCenter"><span class="material-icons-outlined">file_download</span> STÁHNOUT</a>
+                <a id="downloadPhoto" href="" download class="noClose modalDownloadButton flex flexCenter"><span class="material-icons-outlined">file_download</span> STÁHNOUT</a>
                 <button class="modalClose flex flexCenter" onclick="closeModal()"><span class="material-icons-outlined">close</span></button>
             </section>
             <section id="bottomPanel">
-                <img src="" id="photoWrap">
+                <img src="" id="photoWrap" class="noClose">
             </section>
         </section>
 
         <section id="rightPanel">
-            <button class="modalNav flex flexCenter" onclick="modalNext({{ max }})">
-                <span class="material-icons modalNavIcon">navigate_next</span>
+            <button class="modalNav flex flexCenter noClose" onclick="modalNext({{ max }})">
+                <span class="material-icons modalNavIcon noClose">navigate_next</span>
             </button>
         </section>
 

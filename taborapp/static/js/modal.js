@@ -1,7 +1,9 @@
 let modal = document.querySelector('.modalWrapper');
+let modalOpened = false;
 
 // OPENING & CLOSING MODAL WINDOW FOR PHOTO GALLERY
 
+// Click on photo
 function openModal(index, max) {
     let imgTag;
     let modal;
@@ -20,8 +22,10 @@ function openModal(index, max) {
 
     downloadPhoto = document.getElementById('downloadPhoto');
     downloadPhoto.href = photoWrap.src;
+    modalOpened = true;
 }
 
+// Click on 'Close' btn
 function closeModal() {
     let photoWrap;
     let modal;
@@ -30,7 +34,23 @@ function closeModal() {
 
     photoWrap = document.getElementById('photoWrap');
     photoWrap.src = '';
+    modalOpened = false;
 }
+
+// Click 'Escape' key
+document.addEventListener('keydown', (e) => {
+    if (e.key == 'Escape' && modalOpened == true) {
+        closeModal();
+    }
+})
+
+// Click on background
+modal.addEventListener('click', (e) => {
+    if (!e.target.className.includes('noClose')) {
+        closeModal();
+    }
+})
+
 
 // LISTING IN MODAL
 
