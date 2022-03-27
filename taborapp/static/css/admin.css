@@ -43,6 +43,10 @@
   margin-top: 1rem;
 }
 
+.disabled {
+  display: none;
+}
+
 /* - Uploading documents - */
 
 .fTab {
