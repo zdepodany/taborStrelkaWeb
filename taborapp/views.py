@@ -135,6 +135,13 @@ class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
                            "taborapp.delete_photomodel", 
                         )
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["username"] = self.request.user.email
+
+        return context
+
     def get(self, request, *args, **kwargs):
         entries = PhotoModel.objects.all().order_by("-id")
         photos = []
