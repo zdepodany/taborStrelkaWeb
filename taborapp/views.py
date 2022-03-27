@@ -3,10 +3,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.contrib.auth.views import LoginView
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, FormView, View
+from django.views.generic import View, TemplateView, FormView
 
 from PIL import Image
 
@@ -14,8 +14,10 @@ from os import remove
 from time import localtime
 from pathlib import Path
 
-from .forms import LoginForm, UploadFileForm, UploadDocForm
+from .forms import LoginForm, UploadFileForm, UploadDocForm, PasswdForm
 from .models import PhotoModel, DocModel
+
+import json
 
 upload_path = Path("media/")
 
@@ -41,7 +43,6 @@ formnames_voluntary = [
 
 def make_thumbnail(file):
     with Image.open(file) as tn:
-        breakpoint()
         size = (256, 256)
         name = Path("thumbnails/") / file.name
         tn.thumbnail(size)
@@ -51,6 +52,12 @@ def make_thumbnail(file):
 def delete_all(model_class, **kwargs):
     for model in model_class.objects.filter(**kwargs):
         remove(model.file.path)
+        model.delete()
+
+def delete_selected(model_class, ids):
+    for model in model_class.objects.filter(id__in=ids):
+        remove(model.file.path)
+        remove(model.thumbnail.path)
         model.delete()
 
 def get_photos(year, page):
@@ -123,16 +130,30 @@ def gallery(request):
                 })
 
 class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
-    permission_required = ("taborapp.view_photomodel",
+    permission_required = ("taborapp.change_photomodel",
                            "taborapp.add_photomodel",
                            "taborapp.delete_photomodel", 
                         )
 
     def get(self, request, *args, **kwargs):
-        return render(request, "deleteSinglePhoto.html")
+        entries = PhotoModel.objects.all().order_by("-id")
+        photos = []
+        for entry in entries:
+            photo = {}
+            photo["url"] = entry.thumbnail.url
+            photo["id"] = entry.id
+            photos.append(photo)
+
+        return render(request, "deleteSinglePhoto.html", {"photos": photos})
+
+    def post(self, request, *args, **kwargs):
+        ids = request.body.decode()
+        ids = json.loads(ids)
+        delete_selected(PhotoModel, ids)
+        return JsonResponse({"status": "TaborwebOk"})
 
 class DeleteAllPhotosView(PermissionRequiredMixin, TemplateView):
-    permission_required = ("taborapp.view_photomodel",
+    permission_required = ("taborapp.change_photomodel",
                            "taborapp.add_photomodel",
                            "taborapp.delete_photomodel", 
                         )
@@ -184,7 +205,6 @@ class DownloadsView(TemplateView):
                 }
             voluntary.append(segment)
 
-        context["username"] = self.request.user.email
         context["mandatory"] = mandatory
         context["voluntary"] = voluntary
 
@@ -208,19 +228,31 @@ class AdminLoginView(LoginView):
     authentication_form = LoginForm
     redirect_authenticated_user = True
 
+class PasswdView(PasswordChangeView):
+    template_name = "passwd.html"
+    success_url = "/login/"
+    form_class = PasswdForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["username"] = self.request.user.email
+
+        return context
+
 class AdminView(PermissionRequiredMixin, FormView):
     form_class = UploadFileForm
 
     template_name = "admin.html"
     login_url = "/login/"
 
-    permission_required = ("taborapp.view_photomodel",
+    permission_required = ("taborapp.change_photomodel",
                            "taborapp.add_photomodel",
                            "taborapp.delete_photomodel", 
                         )
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)                     
+        context = super().get_context_data(**kwargs)
 
         context["username"] = self.request.user.email
 
@@ -240,7 +272,7 @@ class DocumentsUploadView(PermissionRequiredMixin, FormView):
     template_name = "uploadDocuments.html"
     login_url = "/login/"
 
-    permission_required = ("taborapp.view_docmodel",
+    permission_required = ("taborapp.change_docmodel",
                            "taborapp.add_docmodel",
                            "taborapp.delete_docmodel", 
                         )

@@ -24,3 +24,28 @@ images.forEach(function (image) {
     }
     })
 })
+
+
+// Create JSON and send it to Django
+
+
+function deletePicked() {
+    let pickedJSON;
+    let xhr = new XMLHttpRequest();
+
+    let form = document.forms[0];
+    let selectElement = form.querySelector('input[name="csrfmiddlewaretoken"]');
+
+    xhr.open("POST", '/deleteSinglePhoto/');
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("X-CSRFToken", selectElement.value);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let json = JSON.parse(xhr.responseText);
+            location.reload();
+        }
+    }
+
+    pickedJSON = JSON.stringify(pickedPhotos);
+    xhr.send(pickedJSON);
+}

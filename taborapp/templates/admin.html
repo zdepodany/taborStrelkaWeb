@@ -22,7 +22,7 @@
     <section class="adminTab flexColumn adMarginTop">
         <span class="adminHubText">Odstranění fotek</span>
         <a href="/deleteSinglePhoto/" class="primaryButton adMarginTop">ODSTRANIT JEDNOTLIVĚ</a>
-        <a href="/deleteAllPhotos" class="primaryButton redButton adMarginTop">ODSTRANIT VŠE</a>
+        <a href="" class="disabled">ODSTRANIT VŠE</a> <!-- DISABLED --> <!-- When enabled: href="/deleteAllPhotos" class="primaryButton redButton adMarginTop" -->
     </section>
 
     <section class="adminTab flexColumn adMarginTop">
@@ -32,7 +32,7 @@
 
     <section class="adminTab flexColumn adMarginTop">
         <span class="adminHubText">Změna hesla</span>
-        <button class="primaryButton adMarginTop">ZMĚNIT HESLO</button>
+        <a href="/passwordChange/" class="primaryButton adMarginTop">ZMĚNIT HESLO</a>
     </section>
 
 {% endblock %}

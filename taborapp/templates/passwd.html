@@ -1,0 +1,42 @@
+{% extends "adminLayout.html" %}
+{% block content %}
+
+<section class="tab firstTab">
+    <form class="adminLoginForm" name="login" method="POST" action="/passwordChange/">
+        {% csrf_token %}
+
+        <div class="inputWrap">
+            <span class="inputHeader">Původní heslo</span>
+            {{ form.old_password }}
+
+            {% if form.old_password.errors %}
+                <div class="passwordErrorWrapper">
+                    {% for error in form.old_password.errors %}
+                        <span>* {{ error }}</span><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="inputWrap">
+            <span class="inputHeader">Nové heslo</span>
+            {{ form.new_password1 }}
+        </div>
+
+        <div class="inputWrap">
+            <span class="inputHeader">Potvrdit nové heslo</span>
+            {{ form.new_password2 }}
+
+            {% if form.old_password.errors %}
+                <div class="passwordErrorWrapper">
+                    {% for error in form.new_password2.errors %}
+                        <span>* {{ error }}</span><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <input type="submit" value="PŘIHLÁSIT" class="primaryButton">
+    </form>
+</section>
+
+{% endblock %}
