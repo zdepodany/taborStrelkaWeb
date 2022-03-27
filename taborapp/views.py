@@ -3,10 +3,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, FormView, View
+from django.views.generic import View, TemplateView, FormView
 
 from PIL import Image
 
@@ -14,7 +14,7 @@ from os import remove
 from time import localtime
 from pathlib import Path
 
-from .forms import LoginForm, UploadFileForm, UploadDocForm
+from .forms import LoginForm, UploadFileForm, UploadDocForm, PasswdForm
 from .models import PhotoModel, DocModel
 
 upload_path = Path("media/")
@@ -206,6 +206,11 @@ class AdminLoginView(LoginView):
     next_page = "/admin/"
     authentication_form = LoginForm
     redirect_authenticated_user = True
+
+class PasswdView(PasswordChangeView):
+    template_name = "passwd.html"
+    success_url = "/login/"
+    form_class = PasswdForm
 
 class AdminView(PermissionRequiredMixin, FormView):
     form_class = UploadFileForm
