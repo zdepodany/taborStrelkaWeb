@@ -212,6 +212,13 @@ class PasswdView(PasswordChangeView):
     success_url = "/login/"
     form_class = PasswdForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["username"] = self.request.user.email
+
+        return context
+
 class AdminView(PermissionRequiredMixin, FormView):
     form_class = UploadFileForm
 
@@ -224,7 +231,7 @@ class AdminView(PermissionRequiredMixin, FormView):
                         )
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)                     
+        context = super().get_context_data(**kwargs)
 
         context["username"] = self.request.user.email
 
