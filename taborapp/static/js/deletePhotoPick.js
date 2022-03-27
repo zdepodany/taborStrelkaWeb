@@ -32,12 +32,11 @@ images.forEach(function (image) {
 function deletePicked() {
     let pickedJSON;
     let xhr = new XMLHttpRequest();
-    let url = '/deleteSinglePhoto/';
 
     let form = document.forms[0];
     let selectElement = form.querySelector('input[name="csrfmiddlewaretoken"]');
 
-    xhr.open("POST", url);
+    xhr.open("POST", '/deleteSinglePhoto/');
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("X-CSRFToken", selectElement.value);
     xhr.onreadystatechange = () => {
