@@ -3,6 +3,9 @@
 {% load static %}
 
 {% block content %}
+<form>
+{% csrf_token %}
+</form>
 
     <section class="mainSection firstTab">
         <section class="adminGallery flex">
@@ -13,7 +16,7 @@
             <img id="3" class="image" src="{% static "img/Win11SE_bloom.png" %}">
             <img id="4" class="image" src="{% static "img/Win11SE_bloom.png" %}">
         </section>
-        <input class="primaryButton redButton adMarginTop" type="submit" value="ODSTRANIT">
+        <input class="primaryButton redButton adMarginTop" onclick="deletePicked()" type="submit" value="ODSTRANIT">
     </section>
 
 {% endblock %}
