@@ -1,4 +1,4 @@
-{% extends "userLayout.html" %}
+{% extends "adminLayout.html" %}
 {% block content %}
 
 <section class="tab firstTab">
@@ -8,6 +8,10 @@
         <div class="inputWrap">
             <span class="inputHeader">Původní heslo</span>
             {{ form.old_password }}
+
+            <div class="passwordErrorWrapper">
+                <span>Heslo je Marcel jezdící na kole pozpátku</span>
+            </div>
         </div>
 
         <div class="inputWrap">
@@ -18,6 +22,10 @@
         <div class="inputWrap">
             <span class="inputHeader">Potvrdit nové heslo</span>
             {{ form.new_password2 }}
+
+            <div class="passwordErrorWrapper">
+                <span>Heslo "PutinJeKunda88"</span>
+            </div>
         </div>
         <div class="formErrors">
             {{form.errors}}

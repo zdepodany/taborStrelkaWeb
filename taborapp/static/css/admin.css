@@ -123,6 +123,19 @@
   transform: scale(0.8);
 }
 
+/* Password change errors */
+
+.passwordErrorWrapper {
+  width: 33%;
+  margin-top: 0.5rem;
+  padding: 1rem 1.4rem;
+  font-weight: 300;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  background-color: #FF4646;
+}
+
 
 /* Responsivity */
 /* 600px */
