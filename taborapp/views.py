@@ -54,6 +54,12 @@ def delete_all(model_class, **kwargs):
         remove(model.file.path)
         model.delete()
 
+def delete_selected(model_class, ids):
+    for model in model_class.objects.filter(id__in=ids):
+        remove(model.file.path)
+        remove(model.thumbnail.path)
+        model.delete()
+
 def get_photos(year, page):
     entries = PhotoModel.objects.filter(year=year).order_by("-id")
     pages = entries.count() // 16 + 1
@@ -141,6 +147,9 @@ class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
         return render(request, "deleteSinglePhoto.html", {"photos": photos})
 
     def post(self, request, *args, **kwargs):
+        ids = request.body.decode()
+        ids = json.loads(ids)
+        delete_selected(PhotoModel, ids)
         return JsonResponse({"status": "TaborwebOk"})
 
 class DeleteAllPhotosView(PermissionRequiredMixin, TemplateView):
