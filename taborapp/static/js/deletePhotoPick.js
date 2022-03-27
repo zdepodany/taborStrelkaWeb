@@ -47,4 +47,5 @@ function deletePicked() {
 
     pickedJSON = JSON.stringify(pickedPhotos);
     xhr.send(pickedJSON);
+    location.reload();
 }
