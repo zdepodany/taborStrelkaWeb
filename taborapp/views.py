@@ -123,7 +123,7 @@ def gallery(request):
                 })
 
 class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
-    permission_required = ("taborapp.view_photomodel",
+    permission_required = ("taborapp.change_photomodel",
                            "taborapp.add_photomodel",
                            "taborapp.delete_photomodel", 
                         )
@@ -132,7 +132,7 @@ class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
         return render(request, "deleteSinglePhoto.html")
 
 class DeleteAllPhotosView(PermissionRequiredMixin, TemplateView):
-    permission_required = ("taborapp.view_photomodel",
+    permission_required = ("taborapp.change_photomodel",
                            "taborapp.add_photomodel",
                            "taborapp.delete_photomodel", 
                         )
@@ -184,7 +184,6 @@ class DownloadsView(TemplateView):
                 }
             voluntary.append(segment)
 
-        context["username"] = self.request.user.email
         context["mandatory"] = mandatory
         context["voluntary"] = voluntary
 
@@ -214,7 +213,7 @@ class AdminView(PermissionRequiredMixin, FormView):
     template_name = "admin.html"
     login_url = "/login/"
 
-    permission_required = ("taborapp.view_photomodel",
+    permission_required = ("taborapp.change_photomodel",
                            "taborapp.add_photomodel",
                            "taborapp.delete_photomodel", 
                         )
@@ -240,7 +239,7 @@ class DocumentsUploadView(PermissionRequiredMixin, FormView):
     template_name = "uploadDocuments.html"
     login_url = "/login/"
 
-    permission_required = ("taborapp.view_docmodel",
+    permission_required = ("taborapp.change_docmodel",
                            "taborapp.add_docmodel",
                            "taborapp.delete_docmodel", 
                         )
