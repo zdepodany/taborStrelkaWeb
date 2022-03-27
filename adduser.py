@@ -10,13 +10,13 @@ user.set_password("asd123")
 permissions = []
 photo_type = ContentType.objects.get(app_label="taborapp", model="photomodel")
 
-for codename in "view_photomodel", "add_photomodel", "delete_photomodel":
+for codename in "change_photomodel", "add_photomodel", "delete_photomodel":
     perm = Permission.objects.filter(content_type=photo_type, codename=codename)
     permissions.append(perm[0])
 
 doc_type = ContentType.objects.get(app_label="taborapp", model="docmodel")
 
-for codename in "view_docmodel", "add_docmodel", "delete_docmodel":
+for codename in "change_docmodel", "add_docmodel", "delete_docmodel":
     perm = Permission.objects.filter(content_type=doc_type, codename=codename)
     permissions.append(perm[0])
 
