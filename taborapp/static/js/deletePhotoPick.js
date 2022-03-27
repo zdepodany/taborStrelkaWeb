@@ -42,10 +42,10 @@ function deletePicked() {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let json = JSON.parse(xhr.responseText);
+            location.reload();
         }
     }
 
     pickedJSON = JSON.stringify(pickedPhotos);
     xhr.send(pickedJSON);
-    location.reload();
 }
