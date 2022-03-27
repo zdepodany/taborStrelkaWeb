@@ -1,17 +1,17 @@
-from django.urls import include, re_path
+from django.conf.urls import url, include
 # TODO: Port all to classes
 from taborapp.views import index, gallery, AdminView, AdminLoginView, LogoutView, YearPickView, DownloadsView, DeleteSinglePhotoView, DeleteAllPhotosView, DocumentsUploadView
 
 urlpatterns = [
-    re_path(r'^$', index),
-    re_path(r'^gallery/', gallery),
-    re_path(r'^admin/', AdminView.as_view()),
-    re_path(r'^yearPick/', YearPickView.as_view()),
-    re_path(r'^downloads/', DownloadsView.as_view()),
-    re_path(r'^login/', AdminLoginView.as_view()),
-    re_path(r'^logout/', LogoutView.as_view()),
-    re_path(r'^deleteSinglePhoto/', DeleteSinglePhotoView.as_view()),
-    re_path(r'^deleteAllPhotos/', DeleteAllPhotosView.as_view()),
-    re_path(r'^uploadDocuments/', DocumentsUploadView.as_view()),
+    url(r'^$', index),
+    url(r'^gallery/', gallery),
+    url(r'^admin/', AdminView.as_view()),
+    url(r'^yearPick/', YearPickView.as_view()),
+    url(r'^downloads/', DownloadsView.as_view()),
+    url(r'^login/', AdminLoginView.as_view()),
+    url(r'^logout/', LogoutView.as_view()),
+    url(r'^deleteSinglePhoto/', DeleteSinglePhotoView.as_view()),
+    url(r'^deleteAllPhotos/', DeleteAllPhotosView.as_view()),
+    url(r'^uploadDocuments/', DocumentsUploadView.as_view()),
 ]
 
