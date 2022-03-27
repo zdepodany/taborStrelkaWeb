@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView, FormView
 
@@ -16,6 +16,8 @@ from pathlib import Path
 
 from .forms import LoginForm, UploadFileForm, UploadDocForm, PasswdForm
 from .models import PhotoModel, DocModel
+
+import json
 
 upload_path = Path("media/")
 
@@ -41,7 +43,6 @@ formnames_voluntary = [
 
 def make_thumbnail(file):
     with Image.open(file) as tn:
-        breakpoint()
         size = (256, 256)
         name = Path("thumbnails/") / file.name
         tn.thumbnail(size)
@@ -129,7 +130,18 @@ class DeleteSinglePhotoView(PermissionRequiredMixin, TemplateView):
                         )
 
     def get(self, request, *args, **kwargs):
-        return render(request, "deleteSinglePhoto.html")
+        entries = PhotoModel.objects.all().order_by("-id")
+        photos = []
+        for entry in entries:
+            photo = {}
+            photo["url"] = entry.thumbnail.url
+            photo["id"] = entry.id
+            photos.append(photo)
+
+        return render(request, "deleteSinglePhoto.html", {"photos": photos})
+
+    def post(self, request, *args, **kwargs):
+        return JsonResponse({"status": "TaborwebOk"})
 
 class DeleteAllPhotosView(PermissionRequiredMixin, TemplateView):
     permission_required = ("taborapp.change_photomodel",
