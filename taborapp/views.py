@@ -22,10 +22,12 @@ import json
 upload_path = Path("media/")
 
 formnames_mandatory = [
+            "Registrace zájemců o přihlášení",
             "Nástupní list",
             "Upozornění rodičů zdravotníkovi",
-            "Určení osoby oprávněné",
-            "Zpracování osobních údajů",
+            "Určení osoby oprávněné dle zák. o zdravotních službách",
+            "Souhlas se zpracováním osobních údajů",
+            "Posudek o zdravotní způsobilosti dítěte",
         ]
 
 formnames_voluntary = [
