@@ -7,12 +7,14 @@ function clickHidden(buttonID) {
 
 // On load
 function init() {
+    // TODO: replace hardcoded docs length with AJAX requested values
     let docButtons = document.querySelectorAll('.realDocBrowse');
 
     docButtons.forEach((docButton, i) => {
         let numID = i
-        if (i > 3) {
-            numID = 1024 + (i-4)
+        // AJAX
+        if (i > 5) {
+            numID = 1024 + (i-6)
         }
         let id = "doc" + numID + "_browse";
         docButton.id = id
@@ -26,8 +28,9 @@ function init() {
 
     docValues.forEach((docValue, i) => {
         let numID = i
-        if (i > 3) {
-            numID = 1024 + (i-4)
+        // AJAX
+        if (i > 5) {
+            numID = 1024 + (i-6)
         }
         docValue.value = numID;
     });
