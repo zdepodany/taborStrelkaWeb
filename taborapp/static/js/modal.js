@@ -39,7 +39,7 @@ function closeModal() {
 
 // Click 'Escape' key
 document.addEventListener('keydown', (e) => {
-    if (e.key == 'Escape' && modalOpened == true) {
+    if (e.key == 'Escape' && modalOpened) {
         closeModal();
     }
 })
@@ -99,7 +99,7 @@ function modalNext(max) {
 
 // Arrow Left - Previous image
 document.addEventListener('keyup', (e) => {
-    if (e.key == 'ArrowLeft' && modalOpened == true) {
+    if (e.key == 'ArrowLeft' && modalOpened) {
         let prevBtn = document.querySelector('#modalNavPrev');
         prevBtn.click();
     }
@@ -107,7 +107,7 @@ document.addEventListener('keyup', (e) => {
 
 // Arrow Right - Next image
 document.addEventListener('keyup', (e) => {
-    if (e.key == 'ArrowRight' && modalOpened == true) {
+    if (e.key == 'ArrowRight' && modalOpened) {
         let nextBtn = document.querySelector('#modalNavNext');
         nextBtn.click();
     }
