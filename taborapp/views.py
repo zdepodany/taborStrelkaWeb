@@ -17,6 +17,8 @@ from pathlib import Path
 from .forms import LoginForm, UploadFileForm, UploadDocForm, PasswdForm
 from .models import PhotoModel, DocModel
 
+from zipfile import ZipFile, ZIP_DEFLATED
+
 import json
 
 upload_path = Path("media/")
@@ -56,11 +58,17 @@ def delete_all(model_class, **kwargs):
         remove(model.file.path)
         model.delete()
 
+    if model_class is PhotoModel:
+        photoArchive_regenerate(0)
+
 def delete_selected(model_class, ids):
     for model in model_class.objects.filter(id__in=ids):
         remove(model.file.path)
         remove(model.thumbnail.path)
         model.delete()
+
+    if model_class is PhotoModel:
+        photoArchive_regenerate(0)
 
 def get_photos(year, page):
     entries = PhotoModel.objects.filter(year=year).order_by("-id")
@@ -102,6 +110,23 @@ def get_docs(amount_mand, amount_vol):
         voluntary.append(query)
 
     return mandatory, voluntary
+
+def photoArchive_regenerate(year):
+    if not year:
+        for i in range(2021, localtime().tm_year + 1):
+            photoArchive_regenerate(i)
+
+    zip_path = upload_path / "photos" / f"tabor_archive_{year}.zip"
+
+    if zip_path.is_file():
+        remove(zip_path)
+
+    entries = PhotoModel.objects.filter(year=year).order_by("-id")
+    with ZipFile(zip_path.as_posix(), mode="w", compression=ZIP_DEFLATED,
+            compresslevel=7) as zipf:
+        for entry in entries:
+            zipf.write(entry.file.path)
+
 
 # Create your views here.
 
@@ -273,6 +298,8 @@ class AdminView(PermissionRequiredMixin, FormView):
             thumbnail = make_thumbnail(file)
             pm = PhotoModel(file=file, thumbnail=thumbnail, year=year)
             pm.save()
+
+        photoArchive_regenerate(year)
         return HttpResponseRedirect('/admin/')
 
 class DocumentsUploadView(PermissionRequiredMixin, FormView):
