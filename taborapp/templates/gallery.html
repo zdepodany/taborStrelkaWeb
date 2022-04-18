@@ -10,7 +10,7 @@
     <section class="modalWrapper" id="modalBG">
 
         <section id="leftPanel">
-            <button class="modalNav flex flexCenter noClose" onclick="modalPrev({{ max }})">
+            <button class="modalNav flex flexCenter noClose" id="modalNavPrev" onclick="modalPrev({{ max }})">
                 <span class="material-icons modalNavIcon noClose">navigate_before</span>
             </button>
         </section>
@@ -26,7 +26,7 @@
         </section>
 
         <section id="rightPanel">
-            <button class="modalNav flex flexCenter noClose" onclick="modalNext({{ max }})">
+            <button class="modalNav flex flexCenter noClose" id="modalNavNext" onclick="modalNext({{ max }})">
                 <span class="material-icons modalNavIcon noClose">navigate_next</span>
             </button>
         </section>
