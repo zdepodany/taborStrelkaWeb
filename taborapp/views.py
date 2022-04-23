@@ -72,17 +72,36 @@ def delete_selected(model_class, ids):
 
 def get_photos(year, page):
     entries = PhotoModel.objects.filter(year=year).order_by("-id")
-    pages = entries.count() // 16 + 1
+    entries_len = entries.count()
+    pagesc = entries_len // 16
+    if entries_len % 16:
+        pagesc += 1
 
     # Someone asked for a page that doesn't exist
     # Return all non-existent photos
-    if pages < page:
-        return None, pages
+    if pagesc < page:
+        return None, range(1, pagesc + 1)
 
     begin = (page - 1) * 16
     end = page * 16
 
     photos = [entry.thumbnail.url for entry in entries[begin:end]]
+
+    if pagesc < 8:
+        pages = range(1, pagesc + 1)
+    else:
+        pages = []
+        last_skipped = False
+        for i in range(1, pagesc + 1):
+            if (i < 3 or i > pagesc - 2
+               or (i < page + 2 and i > page - 2)):
+                pages.append(i)
+                if last_skipped:
+                    last_skipped = False
+            else:
+                if not last_skipped:
+                    pages.append(-1)
+                    last_skipped = True
 
     return photos, pages
 
@@ -152,7 +171,7 @@ def gallery(request):
                 "page": page,
                 "year": year,
                 "photos": photos,
-                "pages": range(1, pages + 1),
+                "pages": pages,
                 "max": len(photos) - 1
                 })
 
