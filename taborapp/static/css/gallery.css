@@ -29,6 +29,7 @@
     width: 21%;
     aspect-ratio: 1 / 1;
     margin: 1.5rem;
+    object-fit: cover;
     border-radius: 0.75rem;
     transition: all 0.2s ease-in-out;
 }
