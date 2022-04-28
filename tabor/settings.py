@@ -129,6 +129,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 MEDIA_URL = "/media/"
+FILE_UPLOAD_PERMISSIONS = 0o660
 
 SECURE_HSTS_SECONDS=3600
 SECURE_CONTENT_TYPE_NOSNIFF=True

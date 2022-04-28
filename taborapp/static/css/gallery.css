@@ -25,9 +25,22 @@
 }
 
 .galleryPicture {
+    cursor: pointer;
     width: 21%;
     aspect-ratio: 1 / 1;
     margin: 1.5rem;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.galleryPicture:hover {
+    transform: scale(1.03);
+    box-shadow: 0.3rem 0.4rem 0.75rem rgba(45, 45, 45, 0.4);
+}
+
+.galleryPicture:active {
+    transform: scale(0.97);
 }
 
 /* Pages picker */

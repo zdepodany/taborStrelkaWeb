@@ -39,7 +39,7 @@ function closeModal() {
 
 // Click 'Escape' key
 document.addEventListener('keydown', (e) => {
-    if (e.key == 'Escape' && modalOpened == true) {
+    if (e.key == 'Escape' && modalOpened) {
         closeModal();
     }
 })
@@ -52,15 +52,18 @@ modal.addEventListener('click', (e) => {
 })
 
 
-// LISTING IN MODAL
+// Listing variables
 
-function modalPrev() {
     let photoWrap;
     let index;
     let strIndex;
     let ourPhoto;
     let downloadPhoto;
 
+
+// Listing in modal
+
+function modalPrev() {
     photoWrap = document.getElementById('photoWrap');
     index = photoWrap.state.index;
 
@@ -77,12 +80,6 @@ function modalPrev() {
 }
 
 function modalNext(max) {
-    let photoWrap;
-    let index;
-    let strIndex;
-    let ourPhoto;
-    let downloadPhoto;
-
     photoWrap = document.getElementById('photoWrap');
     index = photoWrap.state.index;
     if (index < max) {
@@ -96,3 +93,22 @@ function modalNext(max) {
     downloadPhoto = document.getElementById('downloadPhoto');
     downloadPhoto.href = photoWrap.src;
 }
+
+
+// Listing in modal with arrow keys
+
+// Arrow Left - Previous image
+document.addEventListener('keyup', (e) => {
+    if (e.key == 'ArrowLeft' && modalOpened) {
+        let prevBtn = document.querySelector('#modalNavPrev');
+        prevBtn.click();
+    }
+})
+
+// Arrow Right - Next image
+document.addEventListener('keyup', (e) => {
+    if (e.key == 'ArrowRight' && modalOpened) {
+        let nextBtn = document.querySelector('#modalNavNext');
+        nextBtn.click();
+    }
+})
