@@ -80,7 +80,7 @@ def get_photos(year, page):
     # Someone asked for a page that doesn't exist
     # Return all non-existent photos
     if pagesc < page:
-        return None, range(1, pagesc + 1)
+        return [], range(1, pagesc + 1)
 
     begin = (page - 1) * 16
     end = page * 16
