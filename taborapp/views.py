@@ -80,7 +80,7 @@ def get_photos(year, page):
     # Someone asked for a page that doesn't exist
     # Return all non-existent photos
     if pagesc < page:
-        return None, range(1, pagesc + 1)
+        return [], range(1, pagesc + 1)
 
     begin = (page - 1) * 16
     end = page * 16
@@ -141,8 +141,8 @@ def photoArchive_regenerate(year):
         remove(zip_path)
 
     entries = PhotoModel.objects.filter(year=year).order_by("-id")
-    with ZipFile(zip_path.as_posix(), mode="w", compression=ZIP_DEFLATED,
-            compresslevel=7) as zipf:
+    with ZipFile(zip_path.as_posix(), mode="w",
+            compression=ZIP_DEFLATED) as zipf:
         for entry in entries:
             zipf.write(entry.file.path)
 
