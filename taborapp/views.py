@@ -47,8 +47,9 @@ formnames_voluntary = [
 
 def make_thumbnail(file):
     with Image.open(file) as tn:
+        filename = Path(file.name).name
         size = (256, 256)
-        name = Path("thumbnails/") / file.name
+        name = Path("thumbnails/") / filename
         tn.thumbnail(size)
         tn.save(upload_path / name)
         return name.as_posix()
@@ -314,8 +315,11 @@ class AdminView(PermissionRequiredMixin, FormView):
     def form_valid(self, form):
         year = localtime().tm_year
         for file in form.files.pop("file"):
+            pm = PhotoModel(file=file, year=year)
+            pm.save()
+            file = pm.file
             thumbnail = make_thumbnail(file)
-            pm = PhotoModel(file=file, thumbnail=thumbnail, year=year)
+            pm.thumbnail = thumbnail
             pm.save()
 
         photoArchive_regenerate(year)
