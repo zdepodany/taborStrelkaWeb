@@ -141,8 +141,8 @@ def photoArchive_regenerate(year):
         remove(zip_path)
 
     entries = PhotoModel.objects.filter(year=year).order_by("-id")
-    with ZipFile(zip_path.as_posix(), mode="w", compression=ZIP_DEFLATED,
-            compresslevel=7) as zipf:
+    with ZipFile(zip_path.as_posix(), mode="w",
+            compression=ZIP_DEFLATED) as zipf:
         for entry in entries:
             zipf.write(entry.file.path)
 
